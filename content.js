@@ -7,6 +7,8 @@ export const TOPICS = {
   'what-is-story': {
     label: 'What is Story',
     icon: '📖',
+    summary: 'The emotional engine that drives every great cinematic journey.',
+    bg: 'https://images.unsplash.com/photo-1512070670240-ce35323672e5',
     definition: 'A story is a sequence of events driven by conflict, where a character wants something and faces obstacles to get it. At its core, every story is about change.',
     whyMatters: 'Without story, even the most beautiful cinematography feels empty. Story is the emotional engine — it is why audiences stay for two hours. A perfect visual without story leaves no memory. A powerful story with simple visuals can change lives.',
     howItWorks: 'Every story works on three levels: the external journey (what the character physically does), the internal journey (how the character changes emotionally), and the thematic journey (what the story says about humanity). These three tracks must align for a story to feel complete.',
@@ -28,6 +30,8 @@ export const TOPICS = {
   'character-arc': {
     label: 'Character Arc',
     icon: '🔄',
+    summary: 'The internal transformation that makes an audience care.',
+    bg: 'https://images.unsplash.com/photo-1542204172-3c224209930f',
     definition: 'A character arc is the internal transformation a character undergoes across the story — the emotional journey from who they are at the beginning to who they become at the end.',
     whyMatters: 'Audiences connect with people, not events. When Walter White becomes Heisenberg, we feel complicit. When Andy Dufresne escapes, we feel free. The arc IS the emotional experience of the film.',
     howItWorks: 'Every arc has three elements: (1) A Wound — a past event that shaped a false belief. (2) A Want — what the character consciously pursues. (3) A Need — what the character actually requires to grow. The story forces a confrontation between want and need.',
@@ -49,6 +53,8 @@ export const TOPICS = {
   'theme': {
     label: 'Theme',
     icon: '💡',
+    summary: 'The soul and moral question encoded beneath the plot.',
+    bg: 'https://images.unsplash.com/photo-1478720568477-152d9b164e26',
     definition: 'Theme is the central question or statement a film makes about the human condition. It is not the plot. It is the meaning underneath the plot.',
     whyMatters: 'Theme is what makes a film last beyond its runtime. Plot is forgotten. Visuals fade. But theme — what a film leaves you feeling — stays. Interstellar is about love transcending time. That\'s why people cry at the bookshelf scene. Not because of the science fiction.',
     howItWorks: 'Theme works through every element simultaneously. The character\'s arc embodies it. The visual language reinforces it. The story structure tests it. A film with strong theme feels unified — every scene serves the same idea.',
@@ -69,6 +75,8 @@ export const TOPICS = {
   'villains': {
     label: 'Villains',
     icon: '🎭',
+    summary: 'The mirrors that reveal who the hero truly is.',
+    bg: 'https://images.unsplash.com/photo-1516280440614-37939bbacd81',
     definition: 'A villain is the force that opposes the protagonist\'s goal, exposing their weakness and forcing their growth. Great villains are not just obstacles — they are dark mirrors of the hero, embodying what the hero could become.',
     whyMatters: 'The villain determines the quality of the hero. A weak villain creates a weak hero. A philosophically dangerous villain forces the hero to become their best self — or destroy themselves trying.',
     howItWorks: 'Great villains work on three levels: (1) External threat — physical challenge. (2) Philosophical threat — an idea the protagonist must reject or absorb. (3) Emotional threat — they exploit the protagonist\'s deepest wound.',
@@ -90,6 +98,8 @@ export const TOPICS = {
   'plot-twists': {
     label: 'Plot Twists',
     icon: '🔀',
+    summary: 'Subverting expectations through earned surprise.',
+    bg: 'https://images.unsplash.com/photo-1509248961158-e54f6934749c',
     definition: 'A plot twist is a revelation that recontextualizes everything the audience previously believed. A great twist doesn\'t just shock — it makes you want to rewatch immediately.',
     whyMatters: 'Twists reveal that storytelling is a contract. The filmmaker plants clues, the audience builds expectations. A great twist honors that contract: both surprising AND inevitable. "I should have seen that coming." That feeling is the achievement.',
     howItWorks: 'Built through misdirection — directing attention to False Option A while True Option B hides in plain sight. Elements of the truth are always present. The twist doesn\'t create new information — it makes the audience realize they misread existing information.',
@@ -111,6 +121,8 @@ export const TOPICS = {
   'worldbuilding': {
     label: 'Worldbuilding',
     icon: '🌍',
+    summary: 'The consistent rules of the film\'s unique reality.',
+    bg: 'https://images.unsplash.com/photo-1446776811953-b23d57bd21aa',
     definition: 'Creating a coherent, believable universe with its own rules, history, and logic — then using that world to tell human stories that could not exist anywhere else.',
     whyMatters: 'Great worldbuilding is invisible. You notice bad worldbuilding — rules that contradict, societies that make no sense. When it works, the audience accepts a completely different reality, and the rules become emotionally powerful.',
     howItWorks: 'Works through implication and economy: show a detail that implies a thousand more. The audience\'s imagination fills in the rest. Don\'t explain how ornithopters fly — show how they move through desert light, and we believe.',
@@ -130,6 +142,8 @@ export const TOPICS = {
   'dialogue-subtext': {
     label: 'Dialogue & Subtext',
     icon: '💬',
+    summary: 'The performance of meaning that lives beneath what is said.',
+    bg: 'https://images.unsplash.com/photo-1541123437800-1bb1317badc2',
     definition: 'Dialogue is what characters say. Subtext is what they mean. Great film dialogue is almost never literal — it is a performance of subtext, where the real meaning lives beneath every word.',
     whyMatters: 'In real life, people rarely say what they mean. They circle it, deflect, perform. Great dialogue captures this. When two characters say "Fine, whatever" in a breakup scene, we hear everything neither can say.',
     howItWorks: 'Subtext operates through the gap between what a character says and what we know they mean. This gap creates tension, comedy, or tragedy. The director controls it through performance, framing, and editing.',
@@ -149,6 +163,8 @@ export const TOPICS = {
   'symbolism': {
     label: 'Symbolism',
     icon: '🔮',
+    summary: 'Visual metaphors that deepen emotional meaning.',
+    bg: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23',
     definition: 'The use of objects, images, colors, or actions to represent ideas beyond their literal meaning. In film, symbolism works invisibly — audiences feel its meaning before they consciously understand it.',
     whyMatters: 'The human brain is pattern-seeking and hard-wired to find meaning in images. A candle flame means more than light. Blood means more than injury. When director and audience align on a symbol, the image does the work of a thousand words.',
     howItWorks: 'Symbols are established through repetition and context. A simple image appears early with a clear literal meaning. It reappears in a different context, our brain adds meaning. By the third appearance, the symbol carries the weight of the entire theme.',
@@ -169,6 +185,8 @@ export const TOPICS = {
   'emotional-scenes': {
     label: 'Emotional Scenes',
     icon: '❤️',
+    summary: 'Engineering genuine connection with surgical precision.',
+    bg: 'https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85',
     definition: 'A carefully engineered moment where all elements — performance, music, editing, camera, and accumulated story context — align to produce a specific, powerful emotional response in the audience.',
     whyMatters: 'This is the most important skill in filmmaking. If you can make an audience cry, laugh, or fear on command — you have power. Emotional scenes are not accidents. Every cry in a movie theater is the result of deliberate craft.',
     howItWorks: 'Emotional scenes are front-loaded with setup. The emotion in a key scene is only possible because of everything before it. Emotion = accumulated story weight + correctly timed release. The cry at the end of Coco was programmed in the first scene.',
@@ -181,9 +199,9 @@ export const TOPICS = {
       { title: 'Interstellar — The Messages', year: '2014', explanation: 'Cooper watches 23 years of video messages in 2 minutes. Building through happiness and milestones to his son\'s angry face. The music. Then Cooper\'s face. Three elements, timed with surgical precision.' },
       { title: 'Up — Opening', year: '2009', explanation: 'Four minutes, no dialogue, a complete life. Love, loss, grief, the weight of unfulfilled dreams. Music, editing pace, and visual storytelling in perfect harmony. Every filmmaker studies this sequence.' },
     ],
-    scenes: [{ scene: 'STAY — Tesseract', film: 'Interstellar', year: '2014', breakdown: 'Cooper realizes he IS the ghost. Two hours of separation, a father choosing the world over his daughter, a daughter\'s lifelong anger — all compressed into one scene with a pipe organ climbing underneath.' }],
-    mistakes: ['Forcing tears without building them first.', 'Relying entirely on music to create emotion.', 'Not trusting silence.', 'Skipping the setup — the emotional payoff must be earned.'],
-    myLearning: 'The day I understood emotional scenes were engineered, not stumbled upon, I started watching differently. I now track: when did the director START building this moment? Almost always far earlier than expected.',
+    scenes: [],
+    mistakes: ['Over-relying on music to create emotion.', 'Sentimentality without earn.', 'No stakes for the character.'],
+    myLearning: 'The best emotional scenes are quiet. They don\'t scream "Feel this!" They just show a person making a choice that costs them everything.',
   },
 };
 

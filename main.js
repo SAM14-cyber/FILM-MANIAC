@@ -4,7 +4,7 @@
  * GPU-Only Animations · IntersectionObserver reveals · 60 FPS
  */
 
-import gsap from 'gsap';
+import { gsap } from 'gsap';
 import Lenis from '@studio-freight/lenis';
 import { TOPICS, SCENE_DATA, CINEMAT_TOPICS, SOUND_TOPICS, THEMES, ABOUT_CONTENT, BLOG_POSTS } from './content.js';
 
@@ -402,80 +402,192 @@ const backBtn = (parent, label) =>
 function renderTopicPage(id) {
   const t = TOPICS[id];
   if (!t) return;
+
+  const topicKeys = Object.keys(TOPICS);
+  const currentIndex = topicKeys.indexOf(id);
+  const prevId = currentIndex > 0 ? topicKeys[currentIndex - 1] : null;
+  const nextId = currentIndex < topicKeys.length - 1 ? topicKeys[currentIndex + 1] : null;
+
   const app = document.getElementById('app');
   app.innerHTML = `
-    ${backBtn('how-movies-work','How Movies Work')}
-    <div class="detail-hero">
-      <span class="detail-hero-icon">${t.icon}</span>
-      <h1 class="detail-hero-title">${t.label}</h1>
+    <!-- Course Top Bar -->
+    <div class="course-top-bar sticky-top">
+      <div class="course-top-left">
+        <a class="back-to-level" data-path="how-movies-work" style="cursor:pointer">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          <span>LEVEL 1 — STORY BASICS</span>
+        </a>
+      </div>
+      <div class="course-top-center">
+        <div class="progress-info">
+          <span class="topic-count">TOPIC ${currentIndex + 1} / ${topicKeys.length}</span>
+          <div class="course-progress-container">
+            <div class="course-progress-bar" id="topicProgressBar" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+      <div class="course-top-right">
+        <span class="topic-label-top">${t.label}</span>
+      </div>
     </div>
-    <div class="detail-body container">
 
-      <div class="detail-block reveal">
-        <span class="detail-block-label">Simple Definition</span>
-        <p class="detail-definition">${t.definition}</p>
-      </div>
+    <!-- Topic Layout -->
+    <div class="topic-layout grid-layout">
+      <!-- Mini Nav (Side) -->
+      <aside class="topic-sidebar sticky-sidebar">
+        <nav class="topic-mini-nav">
+          <a href="#definition" class="mini-nav-item active" data-section="definition">Definition</a>
+          <a href="#why-matters" class="mini-nav-item" data-section="why-matters">Why It Matters</a>
+          <a href="#how-it-works" class="mini-nav-item" data-section="how-it-works">How It Works</a>
+          <a href="#types" class="mini-nav-item" data-section="types">Types</a>
+          <a href="#examples" class="mini-nav-item" data-section="examples">Examples</a>
+          <a href="#mistakes" class="mini-nav-item" data-section="mistakes">Mistakes</a>
+          <a href="#summary" class="mini-nav-item" data-section="summary">Summary</a>
+        </nav>
+      </aside>
 
-      <div class="detail-block reveal d1">
-        <span class="detail-block-label">Why It Matters in Cinema</span>
-        <p>${t.whyMatters}</p>
-      </div>
+      <!-- Main Content Area -->
+      <main class="topic-content-main">
+        <!-- Topic Hero Section -->
+        <section class="topic-hero" style="background-image: url('${IMG(t.bg, 1600)}')">
+          <div class="topic-hero-overlay"></div>
+          <div class="topic-hero-content container">
+            <h1 class="reveal">${t.label}</h1>
+            <p class="reveal d1">${t.summary || t.definition.substring(0, 100) + '...'}</p>
+          </div>
+        </section>
 
-      <div class="detail-block reveal d2">
-        <span class="detail-block-label">How It Works</span>
-        <p>${t.howItWorks}</p>
-      </div>
-
-      <div class="detail-block reveal">
-        <span class="detail-block-label">Types</span>
-        <div class="detail-types">
-          ${t.types.map(tp => `
-            <div class="detail-type-card">
-              <h4>${tp.name}</h4>
-              <p>${tp.desc}</p>
-            </div>`).join('')}
-        </div>
-      </div>
-
-      <div class="detail-block reveal">
-        <span class="detail-block-label">Movie Examples</span>
-        <div class="detail-examples">
-          ${t.examples.map(ex => `
-            <div class="detail-example">
-              <div class="detail-example-meta">
-                <strong>${ex.title}</strong>
-                <span class="detail-example-year">${ex.year}</span>
-              </div>
-              <p>${ex.explanation}</p>
-            </div>`).join('')}
-        </div>
-      </div>
-
-      <div class="detail-block reveal">
-        <span class="detail-block-label">Scene Breakdown Example</span>
-        ${t.scenes.map(s => `
-          <div class="detail-scene-ex">
-            <div class="detail-scene-ex-header">
-              <strong>${s.scene}</strong>
-              <span>${s.film} · ${s.year}</span>
+        <!-- Content Cards -->
+        <div class="topic-sections-container container">
+          <section id="definition" class="topic-section-wrapper">
+            <div class="topic-section-card reveal">
+              <h3>Simple Explanation</h3>
+              <p class="topic-definition-text">${t.definition}</p>
             </div>
-            <p>${s.breakdown}</p>
-          </div>`).join('')}
-      </div>
+          </section>
 
-      <div class="detail-block reveal">
-        <span class="detail-block-label">Common Mistakes</span>
-        <ul class="detail-mistakes">
-          ${t.mistakes.map(m => `<li>${m}</li>`).join('')}
-        </ul>
-      </div>
+          <section id="why-matters" class="topic-section-wrapper">
+            <div class="topic-section-card reveal d1">
+              <h3>Why This Matters</h3>
+              <p>${t.whyMatters}</p>
+            </div>
+          </section>
 
-      <div class="detail-block detail-learning reveal">
-        <span class="detail-block-label">What I Learned</span>
-        <blockquote class="detail-quote">"${t.myLearning}"</blockquote>
-      </div>
+          <section id="how-it-works" class="topic-section-wrapper">
+            <div class="topic-section-card reveal d2">
+              <h3>How It Works</h3>
+              <p>${t.howItWorks}</p>
+            </div>
+          </section>
+
+          <section id="types" class="topic-section-wrapper">
+            <div class="topic-section-card reveal">
+              <h3>Types & Styles</h3>
+              <div class="topic-card-grid">
+                ${t.types.map(tp => `
+                  <div class="topic-sub-card">
+                    <h4>${tp.name}</h4>
+                    <p>${tp.desc}</p>
+                  </div>`).join('')}
+              </div>
+            </div>
+          </section>
+
+          <section id="examples" class="topic-section-wrapper">
+            <div class="topic-section-card reveal">
+              <h3>Movie Examples</h3>
+              <div class="topic-examples-grid">
+                ${t.examples.map(ex => `
+                  <div class="topic-example-box">
+                    <strong>${ex.title} (${ex.year})</strong>
+                    <p>${ex.explanation}</p>
+                  </div>`).join('')}
+              </div>
+            </div>
+          </section>
+
+          <section id="mistakes" class="topic-section-wrapper">
+            <div class="topic-section-card reveal">
+              <h3>Common Mistakes</h3>
+              <ul class="topic-mistakes-list">
+                ${t.mistakes.map(m => `<li>${m}</li>`).join('')}
+              </ul>
+            </div>
+          </section>
+
+          <section id="summary" class="topic-section-wrapper">
+            <div class="topic-section-card reveal summary-card">
+              <h3>Personal Summary</h3>
+              <blockquote class="topic-quote">"${t.myLearning}"</blockquote>
+            </div>
+          </section>
+
+          <!-- Navigation Footer -->
+          <footer class="topic-nav-footer">
+            ${prevId ? `
+              <div class="topic-nav-btn prev" data-path="topic--${prevId}" style="cursor:pointer">
+                <span class="btn-label">PREVIOUS</span>
+                <span class="btn-title">${TOPICS[prevId].label}</span>
+              </div>` : '<span></span>'}
+
+            <div class="topic-nav-btn home" data-path="how-movies-work" style="cursor:pointer">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+              </svg>
+            </div>
+
+            ${nextId ? `
+              <div class="topic-nav-btn next" data-path="topic--${nextId}" style="cursor:pointer">
+                <span class="btn-label">NEXT</span>
+                <span class="btn-title">${TOPICS[nextId].label}</span>
+              </div>` : `
+              <div class="topic-nav-btn next" data-path="cinematography" style="cursor:pointer">
+                <span class="btn-label">FINISHED LEVEL 1</span>
+                <span class="btn-title">GO TO CINEMATOGRAPHY</span>
+              </div>`}
+          </footer>
+        </div>
+      </main>
     </div>
-    ${footerHTML()}`;
+  `;
+
+  // --- UI Interactivity ---
+  const handleCourseScroll = () => {
+    const pBar = document.getElementById('topicProgressBar');
+    if (!pBar) return;
+    
+    // Progress bar logic
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = (window.scrollY / total) * 100;
+    pBar.style.width = `${progress}%`;
+
+    // Active link highlighting
+    const sections = document.querySelectorAll('.topic-section-wrapper');
+    const navItems = document.querySelectorAll('.mini-nav-item');
+    
+    let currentSectionId = "";
+    sections.forEach(sec => {
+      const top = sec.offsetTop;
+      if (window.scrollY >= top - 200) {
+        currentSectionId = sec.getAttribute('id');
+      }
+    });
+
+    navItems.forEach(item => {
+      item.classList.remove('active');
+      if (item.getAttribute('href') === `#${currentSectionId}`) {
+        item.classList.add('active');
+      }
+    });
+  };
+
+  window.addEventListener('scroll', handleCourseScroll);
+  // Cleanup
+  window.addEventListener('hashchange', () => {
+    window.removeEventListener('scroll', handleCourseScroll);
+  }, { once: true });
 }
 
 function renderScenePage(id) {

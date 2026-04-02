@@ -4,8 +4,8 @@
  * GPU-Only Animations · IntersectionObserver reveals · 60 FPS
  */
 
-import { gsap } from 'gsap';
-import Lenis from '@studio-freight/lenis';
+//import { gsap } from 'gsap';
+//import Lenis from '@studio-freight/lenis';
 import { TOPICS, SCENE_DATA, CINEMAT_TOPICS, SOUND_TOPICS, THEMES, ABOUT_CONTENT, BLOG_POSTS } from './content.js';
 
 // ─── SMOOTH SCROLL ──────────────────────────────────────────────────────────

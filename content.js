@@ -1,0 +1,422 @@
+// ═══════════════════════════════════════════════════════════
+//  BEHIND THE FRAME — CONTENT DATABASE
+// ═══════════════════════════════════════════════════════════
+
+// ─── HOW MOVIES WORK: TOPIC DATA ────────────────────────────
+export const TOPICS = {
+  'what-is-story': {
+    label: 'What is Story',
+    icon: '📖',
+    definition: 'A story is a sequence of events driven by conflict, where a character wants something and faces obstacles to get it. At its core, every story is about change.',
+    whyMatters: 'Without story, even the most beautiful cinematography feels empty. Story is the emotional engine — it is why audiences stay for two hours. A perfect visual without story leaves no memory. A powerful story with simple visuals can change lives.',
+    howItWorks: 'Every story works on three levels: the external journey (what the character physically does), the internal journey (how the character changes emotionally), and the thematic journey (what the story says about humanity). These three tracks must align for a story to feel complete.',
+    types: [
+      { name: 'Man vs. Self', desc: 'The character\'s greatest enemy is their own mind. Example: Whiplash — Fletcher is the antagonist, but the real conflict is Andrew\'s obsession.' },
+      { name: 'Man vs. Man', desc: 'Two characters with opposing goals clash. Example: The Godfather — Michael vs. the rival families.' },
+      { name: 'Man vs. Society', desc: 'A character fights against a system or culture. Example: Parasite — the Kim family vs. class structure.' },
+      { name: 'Man vs. Fate', desc: 'The character wrestles with destiny. Example: Arrival — Louise knows what\'s coming and chooses it anyway.' },
+    ],
+    examples: [
+      { title: 'Parasite', year: '2019', explanation: 'On the surface, a poor family infiltrating a rich household. Underneath, it\'s a story about the violence of inequality — what desperation drives people to. Every plot beat serves the theme.' },
+      { title: 'Arrival', year: '2016', explanation: 'A linguist communicates with aliens. But the real story is about grief, love, and whether knowing a tragic outcome changes your choice to live it.' },
+      { title: 'Interstellar', year: '2014', explanation: 'A father-daughter survival story wrapped in hard sci-fi. Works because the stakes are intimate (saving Murph) and cosmic (saving humanity) simultaneously.' },
+    ],
+    scenes: [{ scene: 'Opening — Parasite', film: 'Parasite', year: '2019', breakdown: 'In two minutes, Bong Joon-ho shows everything: a family hunched near the ceiling hunting WiFi, framed below the world they want to join. No dialogue needed. The story is already told visually.' }],
+    mistakes: ['Confusing plot with story. Plot is what happens. Story is why it matters.', 'Starting with concept instead of character.', 'Forgetting that conflict is not just external — the deepest conflicts are internal.', 'Resolving the theme too neatly.'],
+    myLearning: 'I used to think story meant plot twists and explosions. Then I watched Arrival and realized the most powerful stories are about the smallest human truths — grief, love, and choice.',
+  },
+  'character-arc': {
+    label: 'Character Arc',
+    icon: '🔄',
+    definition: 'A character arc is the internal transformation a character undergoes across the story — the emotional journey from who they are at the beginning to who they become at the end.',
+    whyMatters: 'Audiences connect with people, not events. When Walter White becomes Heisenberg, we feel complicit. When Andy Dufresne escapes, we feel free. The arc IS the emotional experience of the film.',
+    howItWorks: 'Every arc has three elements: (1) A Wound — a past event that shaped a false belief. (2) A Want — what the character consciously pursues. (3) A Need — what the character actually requires to grow. The story forces a confrontation between want and need.',
+    types: [
+      { name: 'Positive Arc (Growth)', desc: 'Character starts broken, ends transformed. False belief is defeated. Example: Shrek learns he deserves love.' },
+      { name: 'Negative Arc (Corruption)', desc: 'Character starts with potential, ends destroyed by their choices. False belief wins. Example: Walter White, Michael Corleone.' },
+      { name: 'Flat Arc (Testing)', desc: 'Character doesn\'t change — the world around them does. Example: Atticus Finch, Furiosa.' },
+      { name: 'Disillusionment Arc', desc: 'Character loses innocence. Wiser but sadder. Example: Charles Foster Kane.' },
+    ],
+    examples: [
+      { title: 'Walter White — Breaking Bad', year: '2008–2013', explanation: 'Want: Security for family. Need: To admit his empire is about ego. Arc: From victim to monster. The corruption is slow, deliberate, and tragic. Every choice is his own.' },
+      { title: 'Eren Yeager — Attack on Titan', year: '2013–2023', explanation: 'Begins as a freedom-obsessed boy who hates oppressors. Ends as the greatest oppressor in history — because he saw the future and chose it. One of the most devastating negative arcs in fiction.' },
+      { title: 'Arthur Fleck — Joker', year: '2019', explanation: 'Want: To be seen. Need: Acceptance. Society refuses both. Arc: Arthur stops trying to make people laugh and becomes what makes them scream.' },
+    ],
+    scenes: [{ scene: 'Crawl Space', film: 'Breaking Bad', year: '2011', breakdown: 'Walt laughs maniacally after losing everything. The laugh is not joy — it is the sound of a person accepting they have become something monstrous. His last self-delusion collapses.' }],
+    mistakes: ['Making the arc happen too suddenly.', 'Forgetting the wound — without backstory, the false belief has no roots.', 'Confusing external change with internal change.', 'Making the character too passive in their own transformation.'],
+    myLearning: 'The most compelling arcs are negative — watching a person choose the wrong path, step by step, knowing it\'s wrong. The horror is not that evil people exist. It\'s that ordinary people become them.',
+  },
+  'theme': {
+    label: 'Theme',
+    icon: '💡',
+    definition: 'Theme is the central question or statement a film makes about the human condition. It is not the plot. It is the meaning underneath the plot.',
+    whyMatters: 'Theme is what makes a film last beyond its runtime. Plot is forgotten. Visuals fade. But theme — what a film leaves you feeling — stays. Interstellar is about love transcending time. That\'s why people cry at the bookshelf scene. Not because of the science fiction.',
+    howItWorks: 'Theme works through every element simultaneously. The character\'s arc embodies it. The visual language reinforces it. The story structure tests it. A film with strong theme feels unified — every scene serves the same idea.',
+    types: [
+      { name: 'Stated Theme', desc: 'A character says the theme directly. Risk: feels on-the-nose. Example: "Get busy living or get busy dying."' },
+      { name: 'Demonstrated Theme', desc: 'Shown through action and consequence, never stated. Most powerful. Example: No Country for Old Men — fate vs. chance, never spoken, always enacted.' },
+      { name: 'Interrogated Theme', desc: 'The film asks a question but refuses to answer it. Example: Joker — is society or Arthur responsible for what he becomes?' },
+    ],
+    examples: [
+      { title: 'Parasite', year: '2019', explanation: '"The violence of class inequality dehumanizes everyone — both poor and rich." Every prop, every spatial metaphor serves this. The lucky stone becomes a murder weapon.' },
+      { title: 'No Country for Old Men', year: '2007', explanation: '"The unstoppable nature of fate and the impossibility of escaping violence." Anton Chigurh is not a villain — he is a force, a symbol of randomness no human power can control.' },
+      { title: 'Eternal Sunshine', year: '2004', explanation: '"Pain is inseparable from love — to erase memory is to erase identity." The film argues a life without pain is not worth living.' },
+    ],
+    scenes: [{ scene: 'Coin Toss', film: 'No Country for Old Men', year: '2007', breakdown: 'Anton holds a man\'s life on a coin result. The owner doesn\'t know what the coin decides. Neither does the audience. This scene IS the theme: fate is random, indifferent, and cannot be reasoned with.' }],
+    mistakes: ['Confusing theme with moral. "Crime doesn\'t pay" is moral. "Power corrupts invisibly" is theme.', 'Stating theme too directly.', 'Having no theme — spectacle without meaning.', 'Scattering too many themes.'],
+    myLearning: 'Theme changed how I watch every film. I now watch the first scene and ask: "What question is this going to answer?" By the final scene, I can trace how every choice served that question.',
+  },
+  'villains': {
+    label: 'Villains',
+    icon: '🎭',
+    definition: 'A villain is the force that opposes the protagonist\'s goal, exposing their weakness and forcing their growth. Great villains are not just obstacles — they are dark mirrors of the hero, embodying what the hero could become.',
+    whyMatters: 'The villain determines the quality of the hero. A weak villain creates a weak hero. A philosophically dangerous villain forces the hero to become their best self — or destroy themselves trying.',
+    howItWorks: 'Great villains work on three levels: (1) External threat — physical challenge. (2) Philosophical threat — an idea the protagonist must reject or absorb. (3) Emotional threat — they exploit the protagonist\'s deepest wound.',
+    types: [
+      { name: 'The Dark Mirror', desc: 'Who the hero could become if they made different choices. Example: Batman and Joker — both created by tragedy, different responses.' },
+      { name: 'The True Believer', desc: 'Fully convinced their worldview is correct. Most dangerous. Example: Thanos, Magneto, Hans Landa.' },
+      { name: 'The Force of Nature', desc: 'Barely human — represents a concept. Example: Anton Chigurh as fate. The shark as primal fear.' },
+      { name: 'The System', desc: 'No single villain, but an institution. Example: Parasite, The Truman Show.' },
+    ],
+    examples: [
+      { title: 'Anton Chigurh', year: '2007', explanation: 'He never loses. He has a consistent philosophy. He gives people a chance (the coin flip) but not a real one. His terror: he is not evil for pleasure — he is evil for consistency.' },
+      { title: 'Hannibal Lecter', year: '1991', explanation: 'Brilliant, cultured, genuinely helpful. He doesn\'t need to escape his cell — he escapes into Clarice\'s mind. His danger is psychological, not physical.' },
+      { title: 'Nurse Ratched', year: '1975', explanation: 'Perfectly calm, rule-following, institutional. Never raises her voice. More terrifying than any monster. She is the power of the system wearing a kind face.' },
+    ],
+    scenes: [{ scene: 'Interrogation', film: 'The Dark Knight', year: '2008', breakdown: '"You have nothing to threaten me with." Not when Joker physically overpowers Batman — when he reveals the hero\'s code is the weakness. Batman cannot kill. Joker has freedom because of that.' }],
+    mistakes: ['Making the villain evil without reason — real villains believe they are right.', 'Making the villain too stupid.', 'No personal connection to the hero.', 'Just scary, not compelling.'],
+    myLearning: 'I now judge a film\'s quality by its villain first. A powerful villain means the hero had to earn every victory. A weak villain means nothing was at stake.',
+  },
+  'plot-twists': {
+    label: 'Plot Twists',
+    icon: '🔀',
+    definition: 'A plot twist is a revelation that recontextualizes everything the audience previously believed. A great twist doesn\'t just shock — it makes you want to rewatch immediately.',
+    whyMatters: 'Twists reveal that storytelling is a contract. The filmmaker plants clues, the audience builds expectations. A great twist honors that contract: both surprising AND inevitable. "I should have seen that coming." That feeling is the achievement.',
+    howItWorks: 'Built through misdirection — directing attention to False Option A while True Option B hides in plain sight. Elements of the truth are always present. The twist doesn\'t create new information — it makes the audience realize they misread existing information.',
+    types: [
+      { name: 'Identity Twist', desc: 'A character is revealed to be someone else. Example: Keyser Söze, Tyler Durden.' },
+      { name: 'Reality Twist', desc: 'The perceived world is false. Example: The Truman Show, Shutter Island.' },
+      { name: 'Structural Twist', desc: 'Timeline or narrative revealed differently. Example: Arrival, Memento.' },
+      { name: 'Morality Twist', desc: 'The hero did something terrible. Example: Oldboy, Gone Girl.' },
+    ],
+    examples: [
+      { title: 'Fight Club', year: '1999', explanation: 'The narrator and Tyler are the same person. Every scene can be re-read. The clues were always there. The revelation doesn\'t just surprise — it makes the film brand new on rewatch.' },
+      { title: 'Arrival', year: '2016', explanation: 'The "backstory" (Louise\'s daughter) is actually foresight. Reframes the entire film as meditation on grief and acceptance. Makes you cry differently on rewatch.' },
+      { title: 'Oldboy', year: '2003', explanation: 'One of cinema\'s most devastating twists. The revelation retroactively destroys every moment of happiness and reveals the entire film was a trap within a trap.' },
+    ],
+    scenes: [{ scene: 'Final Reveal', film: 'The Usual Suspects', year: '1995', breakdown: 'As the detective realizes Kint IS Söze, the camera revisits every lie he told. The genius is not the twist — it\'s making the audience complicit in their own deception.' }],
+    mistakes: ['Twists requiring the audience to be stupid.', 'Cheating — clues never planted.', 'Twist as the entire point with no theme.', 'No emotional payoff.'],
+    myLearning: 'The best twist changes what the story means, not just what happened. Arrival\'s twist isn\'t about aliens — it\'s about choosing love even knowing the cost.',
+  },
+  'worldbuilding': {
+    label: 'Worldbuilding',
+    icon: '🌍',
+    definition: 'Creating a coherent, believable universe with its own rules, history, and logic — then using that world to tell human stories that could not exist anywhere else.',
+    whyMatters: 'Great worldbuilding is invisible. You notice bad worldbuilding — rules that contradict, societies that make no sense. When it works, the audience accepts a completely different reality, and the rules become emotionally powerful.',
+    howItWorks: 'Works through implication and economy: show a detail that implies a thousand more. The audience\'s imagination fills in the rest. Don\'t explain how ornithopters fly — show how they move through desert light, and we believe.',
+    types: [
+      { name: 'Physical World', desc: 'Geography, physics, visual texture. Example: Every desert shot in Dune communicates harshness without a word.' },
+      { name: 'Social World', desc: 'Hierarchies, cultures, power. Example: Parasite\'s economic stratification through architecture.' },
+      { name: 'Rule-Based World', desc: 'Sci-fi systems with consistent internal logic. Example: The time logic in Arrival, Tenet, Interstellar.' },
+    ],
+    examples: [
+      { title: 'Dune', year: '2021', explanation: 'Villeneuve builds Arrakis through texture — sound design, movement patterns, how bodies interact with sand. The politics of spice are felt through who controls what and who dies for it.' },
+      { title: 'Mad Max: Fury Road', year: '2015', explanation: 'An entire civilization built in the background of action sequences. Economy (water/milk), religion (V8 engines), hierarchy (War Boys) — entirely through visual storytelling.' },
+    ],
+    scenes: [{ scene: 'Opening Sky', film: 'Dune', year: '2021', breakdown: 'The first shots don\'t explain Arrakis — they establish its mood. Vast, indifferent, beautiful, lethal. We understand why people fear and revere this place before one word of dialogue.' }],
+    mistakes: ['Exposition dumps — characters explaining things they already know.', 'Inconsistent rules that change when plot requires it.', 'Building world instead of story.'],
+    myLearning: 'I learned to study what\'s in the background of every frame. The best worlds are built in the edges — a poster on a wall, a social interaction with one extra beat. Good directors use every pixel.',
+  },
+  'dialogue-subtext': {
+    label: 'Dialogue & Subtext',
+    icon: '💬',
+    definition: 'Dialogue is what characters say. Subtext is what they mean. Great film dialogue is almost never literal — it is a performance of subtext, where the real meaning lives beneath every word.',
+    whyMatters: 'In real life, people rarely say what they mean. They circle it, deflect, perform. Great dialogue captures this. When two characters say "Fine, whatever" in a breakup scene, we hear everything neither can say.',
+    howItWorks: 'Subtext operates through the gap between what a character says and what we know they mean. This gap creates tension, comedy, or tragedy. The director controls it through performance, framing, and editing.',
+    types: [
+      { name: 'Emotional Subtext', desc: 'Characters avoid expressing feelings directly. Example: In Interstellar, Cooper and Murph argue. The love IS the argument.' },
+      { name: 'Power Subtext', desc: 'A conversation about one thing that is actually about dominance. Example: The Godfather\'s opening — every word is the architecture of power.' },
+      { name: 'Deceptive Subtext', desc: 'A character lies but the audience knows it. We watch the subtext, not the text.' },
+    ],
+    examples: [
+      { title: 'Before Sunrise / Sunset', year: '1995 / 2004', explanation: 'Entire films built from dialogue. Two people discussing philosophy who are actually discussing whether this moment can last. The most romantic scenes are conversations about time.' },
+      { title: 'There Will Be Blood', year: '2007', explanation: 'Plainview uses business language to destroy everyone. His real dialogue is through action — every word is cover for what he is actually doing.' },
+    ],
+    scenes: [{ scene: '"I\'m Finished"', film: 'There Will Be Blood', year: '2007', breakdown: 'Plainview isn\'t just talking about oil. The scene is about a man destroying every connection. The dialogue is about wells. The subtext is the soul of capitalism itself.' }],
+    mistakes: ['On-the-nose dialogue — "I\'m hurt because you didn\'t come."', 'Ignoring physicality during dialogue.', 'Using dialogue as exposition delivery.', 'No rhythm — dialogue is music.'],
+    myLearning: 'I started watching films with sound off. Just watching faces and bodies. The subtext is always visible — people can\'t hide real feelings in their bodies, only in their words.',
+  },
+  'symbolism': {
+    label: 'Symbolism',
+    icon: '🔮',
+    definition: 'The use of objects, images, colors, or actions to represent ideas beyond their literal meaning. In film, symbolism works invisibly — audiences feel its meaning before they consciously understand it.',
+    whyMatters: 'The human brain is pattern-seeking and hard-wired to find meaning in images. A candle flame means more than light. Blood means more than injury. When director and audience align on a symbol, the image does the work of a thousand words.',
+    howItWorks: 'Symbols are established through repetition and context. A simple image appears early with a clear literal meaning. It reappears in a different context, our brain adds meaning. By the third appearance, the symbol carries the weight of the entire theme.',
+    types: [
+      { name: 'Visual Symbol', desc: 'An object with extended meaning. Example: The spinning top in Inception. The red coat in Schindler\'s List.' },
+      { name: 'Color Symbol', desc: 'Colors representing emotional states. Example: Red for passion/danger. Blue for isolation and grief.' },
+      { name: 'Spatial Symbol', desc: 'Physical spaces representing psychology. Example: Height and depth in Parasite — the basement, the mansion, underground.' },
+    ],
+    examples: [
+      { title: 'Parasite', year: '2019', explanation: 'The scholar\'s rock represents the dream of prosperity. By the end, it becomes a murder weapon. The object hasn\'t changed. The family\'s understanding of what dreams cost has.' },
+      { title: 'Schindler\'s List', year: '1993', explanation: 'In a black-and-white film, the red coat on a girl. Her color makes her impossible to ignore. When Schindler sees her coat again later — as a body — his transformation completes.' },
+      { title: 'Inception', year: '2010', explanation: 'The spinning top — if it spins, we\'re in a dream. The film ends with it spinning. Nolan makes it wobble slightly, then cuts. The audience\'s reaction to that choice IS the film\'s statement on reality.' },
+    ],
+    scenes: [{ scene: 'Red Coat', film: 'Schindler\'s List', year: '1993', breakdown: 'The single injection of color in a black-and-white film forces the audience to see one individual life in a sea of mass death. We cannot make it abstract. That is the function of the symbol.' }],
+    mistakes: ['Overexplaining symbols through dialogue.', 'Using symbols without establishing them first.', 'Symbols with no thematic connection.'],
+    myLearning: 'Now every prop is a potential question: "Did they put this here deliberately?" The answer is almost always yes. Once you start seeing symbols, you can\'t stop.',
+  },
+  'emotional-scenes': {
+    label: 'Emotional Scenes',
+    icon: '❤️',
+    definition: 'A carefully engineered moment where all elements — performance, music, editing, camera, and accumulated story context — align to produce a specific, powerful emotional response in the audience.',
+    whyMatters: 'This is the most important skill in filmmaking. If you can make an audience cry, laugh, or fear on command — you have power. Emotional scenes are not accidents. Every cry in a movie theater is the result of deliberate craft.',
+    howItWorks: 'Emotional scenes are front-loaded with setup. The emotion in a key scene is only possible because of everything before it. Emotion = accumulated story weight + correctly timed release. The cry at the end of Coco was programmed in the first scene.',
+    types: [
+      { name: 'The Release Scene', desc: 'After prolonged suppression, a character finally feels. Example: Andy walking into the Shawshank rain.' },
+      { name: 'The Loss Scene', desc: 'Something irreplaceable is removed. Example: Mufasa\'s death. The opening sequence of Up.' },
+      { name: 'The Recognition Scene', desc: 'A character sees a truth clearly for the first time. Example: The bookshelf scene in Interstellar.' },
+    ],
+    examples: [
+      { title: 'Interstellar — The Messages', year: '2014', explanation: 'Cooper watches 23 years of video messages in 2 minutes. Building through happiness and milestones to his son\'s angry face. The music. Then Cooper\'s face. Three elements, timed with surgical precision.' },
+      { title: 'Up — Opening', year: '2009', explanation: 'Four minutes, no dialogue, a complete life. Love, loss, grief, the weight of unfulfilled dreams. Music, editing pace, and visual storytelling in perfect harmony. Every filmmaker studies this sequence.' },
+    ],
+    scenes: [{ scene: 'STAY — Tesseract', film: 'Interstellar', year: '2014', breakdown: 'Cooper realizes he IS the ghost. Two hours of separation, a father choosing the world over his daughter, a daughter\'s lifelong anger — all compressed into one scene with a pipe organ climbing underneath.' }],
+    mistakes: ['Forcing tears without building them first.', 'Relying entirely on music to create emotion.', 'Not trusting silence.', 'Skipping the setup — the emotional payoff must be earned.'],
+    myLearning: 'The day I understood emotional scenes were engineered, not stumbled upon, I started watching differently. I now track: when did the director START building this moment? Almost always far earlier than expected.',
+  },
+};
+
+// ─── SCENE BREAKDOWNS ────────────────────────────────────────
+export const SCENE_DATA = {
+  'interstellar-docking': {
+    title: 'Interstellar — The Docking Sequence',
+    film: 'Interstellar', year: '2014', director: 'Christopher Nolan',
+    img: 'https://images.unsplash.com/photo-1419242902214-272b3f66ee7a',
+    summary: 'Cooper manually docks with a spinning Endurance at 67 rpm after CASE fails — a mathematically impossible maneuver executed by sheer pilot instinct.',
+    purpose: 'Proves Cooper\'s identity: someone who attempts the impossible because giving up means leaving Murph behind.',
+    character: 'Cooper in pure mission mode. Every instinct and calculation is fatherhood compressed into a physical act.',
+    camera: 'Camera spins WITH the Endurance — genuine spatial disorientation. Rapid alternation between tight cockpit shots and terrifying wide shots of debris.',
+    lighting: 'Harsh interstellar white light against total black. No soft fill. Stark contrast making every rotating surface feel lethal.',
+    color: 'Cold steel blue and white against absolute black. No warmth. No safety. Orange debris flames = the only warmth, and they signal death.',
+    sound: 'Hans Zimmer\'s organ builds in layers. Hard cuts to near-silence (space physics). The silence makes the organ more devastating on return.',
+    editing: 'Rapid cross-cutting accelerates. At the critical docking moment — a 2-second hold. Then impact. The pause makes it more visceral.',
+    dialogue: '"CASE, get out! I\'m going manual." One line. Then action. Words get in the way of physical extremity.',
+    theme: 'Human will against mathematical impossibility. Love exceeding what empirical calculation calls possible.',
+    symbolism: 'The spinning Endurance is a clock — time out of control. Cooper matching its rotation is a father trying to stop time for his daughter.',
+    emotion: 'Raw kinetic terror becoming exhilaration. The release when docking succeeds is physical — the audience exhales with Cooper.',
+    myLearning: 'Action sequences should serve character revelation. Cooper\'s piloting ability IS his identity. A man who can dock at 67 rpm is a man who cannot accept that some things are impossible.',
+  },
+  'joker-stairs': {
+    title: 'Joker — The Stairs Dance',
+    film: 'Joker', year: '2019', director: 'Todd Phillips',
+    img: 'https://images.unsplash.com/photo-1533488765986-dfa2a9939acd',
+    summary: 'After killing three men on the subway, Arthur Fleck walks to the Bronx staircase and begins to dance unconsciously to Gary Glitter as the Joker persona fully arrives.',
+    purpose: 'The moment Arthur stops trying to fit the world and starts becoming himself — even if "himself" is a monster.',
+    character: 'Arthur has been hunched and apologetic throughout. On these stairs, for the first time, he takes up full space. The body language transforms completely.',
+    camera: 'Medium distance, then slowly dollies back to show the full staircase. Observing, not sensationalizing. Joker approaches us. The camera doesn\'t flinch.',
+    lighting: 'Golden morning light. Beautiful and warm. Phillips isn\'t afraid to make a villain\'s liberation look gorgeous — which makes it harder to vilify and more disturbing.',
+    color: 'The film shifts slightly warmer after this scene. Cold institutional grey before. Warmer, more saturated after. Color tracks the transformation.',
+    sound: 'Diegetic vs. non-diegetic confusion — is Arthur hearing the music? This blurs the line between his internal reality and external world.',
+    editing: 'Long, unbroken takes during the dance. No rapid cuts to get through faster. Chazelle is saying: stay here. Feel this. The discomfort is the point.',
+    dialogue: 'Zero dialogue. Arthur has run out of things to say to the world. He can only move now.',
+    theme: 'Freedom as self-destruction. Society creates the Joker through rejection and denial. When he is finally "free," the freedom is total — from compassion, from humanity.',
+    symbolism: 'The stairs are recurring — exhausting climb up as Arthur vs. effortless descent as Joker. Same physical space, completely different psychology.',
+    emotion: 'Uncomfortably joyful. We feel the liberation even as we recognize its horror. This dual-track response is cinema at its most ethically complex.',
+    myLearning: 'Great cinema refuses to make the audience comfortable. Making Arthur\'s transformation beautiful makes the audience complicit in the joy. The discomfort that follows is the real conversation.',
+  },
+  'breaking-bad-crawl': {
+    title: 'Breaking Bad — The Crawl Space',
+    film: 'Breaking Bad', year: '2011', director: 'Vince Gilligan',
+    img: 'https://images.unsplash.com/photo-1536440136628-849c177e76a1',
+    summary: 'Walt discovers Skyler gave his money to Ted Beneke. He lies on the floor of the crawl space and begins laughing — a sound that becomes indistinguishable from screaming.',
+    purpose: 'The pivot point of the entire series. The moment Walt\'s arc completes. His laugh is the sound of a man realizing there is no going back.',
+    character: 'Walter has told himself: "Everything I\'ve done is for my family." This scene destroys that story. He cannot stop being Heisenberg to try to save what\'s left.',
+    camera: 'Cranes slowly upward from above, making Walt smaller in the frame. Skyler\'s legs visible through the floorboards — the family he claims to be doing this for, above him in a world he\'s left.',
+    lighting: 'A single bare bulb. Dungeon lighting. Harsh, isolated, claustrophobic.',
+    color: 'Brown dirt and grey concrete. The money (green) now meaningless. The palette says: buried alive.',
+    sound: 'Bryan Cranston\'s laugh starts as a chuckle, rises to full laughter, becomes impossible to categorize. Skyler\'s uncertain "Walt?" over the phone. Heisenberg\'s theme building underneath.',
+    editing: 'Long take held on Cranston\'s face. The camera does not cut. The audience cannot escape the laugh.',
+    dialogue: '"Walt?" / Nothing but the laugh.',
+    theme: 'The collapse of self-delusion. Walt built his moral framework on "I did it for my family." This scene is its structural failure.',
+    symbolism: 'The crawl space IS Walt\'s soul — underground, dark, full of dirty money, sealed from the normal world. His family exists above him in a world he is no longer part of.',
+    emotion: 'Horror and terrible pity. Even knowing Walt is a monster, we feel the loss in the laugh. Bryan Cranston makes us feel what it is to fully lose yourself.',
+    myLearning: 'The greatest performances are physically based. Cranston doesn\'t tell us Walt is breaking. He makes sounds our nervous system responds to before our mind processes what we\'re watching.',
+  },
+  'whiplash-finale': {
+    title: 'Whiplash — The Final Performance',
+    film: 'Whiplash', year: '2014', director: 'Damien Chazelle',
+    img: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04',
+    summary: 'Andrew takes over Fletcher\'s concert after being publicly humiliated, ignores signals to stop, and drives the band into the greatest performance of his life. Fletcher conducts him.',
+    purpose: 'Resolves the central question: did the abuse produce genius, or almost destroy it? The film answers: both, and refuses to choose.',
+    character: 'Andrew\'s entire arc converges in 7 minutes. He chooses music over self-preservation, trauma, his father. The drumming is the full expression of who he is.',
+    camera: 'Tight on hands, faces, cymbals. The camera is INSIDE the performance. Then it pulls wide to show the full stage. The rhythm of cuts matches the music tempo.',
+    lighting: 'Stage spot lighting — hot white. As the performance builds, the lights feel less theatrical and more like a mind at its absolute limit.',
+    color: 'Warm stage gold interrupted by deep audience black. Something is happening in the light that cannot be understood by those in the dark.',
+    sound: '"Caravan" at Fletcher\'s accelerating tempo. The mix isolates Andrew\'s kit during his solo, then builds the orchestra back. Two beats of silence before applause — those two beats are the entire film.',
+    editing: 'Cuts per minute accelerate across the performance. The editing IS drumming. The final passages blur into a single overwhelming sensation.',
+    dialogue: '"Now you will never know." / "It is okay." Every word loaded with the entire film\'s weight.',
+    theme: 'The cost of greatness — and whether it was worth it. Chazelle refuses to answer. The audience carries the question home.',
+    symbolism: 'Blood on the drumhead. Fletcher demanded playing until you bleed — literally manifested. Physical proof of total sacrifice.',
+    emotion: 'One of cinema\'s most complex emotional experiences. Triumph for Andrew. Something for Fletcher (which makes you uncomfortable). The question refuses to resolve.',
+    myLearning: 'The most interesting films leave their central question open. "Was Fletcher right?" I\'ve had twelve conversations about this film. We always disagree. Films that do that are doing something important.',
+  },
+};
+
+// ─── CINEMATOGRAPHY SUBTOPICS ────────────────────────────────
+export const CINEMAT_TOPICS = {
+  'camera-shots': {
+    label: 'Camera Shots',
+    intro: 'Shot distance determines intimacy, scale, and power. Every shot carries a specific emotional connotation — the wrong shot at the wrong moment creates the wrong emotion.',
+    subtopics: [
+      { name: 'Extreme Wide Shot', when: 'Establish geography and isolation', emotion: 'Smallness, loneliness, awe', example: 'Dune\'s desert shots — humans become specks. The world is vast and indifferent.' },
+      { name: 'Wide Shot', when: 'Character in full environment', emotion: 'Context, powerlessness or freedom', example: 'The Graduate\'s final bus shot — initial joy fading to existential uncertainty.' },
+      { name: 'Medium Shot', when: 'Standard dialogue, neutral scenes', emotion: 'Observational, neutral', example: 'Choosing NOT to use it signals emotional intensity — the close-up is the departure point.' },
+      { name: 'Medium Close-Up', when: 'Emotional focus, psychological interest', emotion: 'Intimacy, scrutiny', example: 'Hannibal Lecter in his cell — emphasizes controlled intelligence and menace.' },
+      { name: 'Close-Up', when: 'Crucial emotional or plot moment', emotion: 'Intense empathy, dramatic emphasis', example: 'Tony Soprano\'s face in the final scene — everything and nothing readable simultaneously.' },
+      { name: 'Extreme Close-Up', when: 'Maximum emphasis on a detail or state', emotion: 'Obsession, hyper-reality', example: 'Leone\'s spaghetti westerns — eyes, hands, guns before gunfights. Unbearable tension from fragments.' },
+      { name: 'Point of View Shot', when: 'Making the audience see through a character\'s eyes', emotion: 'Total identification', example: 'Jaws — the shark\'s POV approaching swimmers. We become the predator.' },
+    ],
+  },
+  'camera-angles': {
+    label: 'Camera Angles',
+    intro: 'Angle is the relationship between camera and subject on the vertical axis. Low angle looking up vs. high angle looking down — same subject, completely different emotional meaning.',
+    subtopics: [
+      { name: 'Eye Level', when: 'Naturalistic, neutral scenes', emotion: 'Equality, objectivity', example: 'Linklater\'s Before trilogy — entirely eye level, creating the feeling of eavesdropping on real people.' },
+      { name: 'Low Angle', when: 'Power, threat, grandeur', emotion: 'Awe, fear, inferiority', example: 'Citizen Kane — extreme low angles establish Kane\'s godlike power, then reveal it as illusion.' },
+      { name: 'High Angle', when: 'Vulnerability, powerlessness, overview', emotion: 'Diminishment, control, God\'s perspective', example: 'Breaking Bad\'s barrel POV — looking up at Walt makes us feel physically below his decisions.' },
+      { name: 'Dutch Angle', when: 'Psychological disorientation, moral instability', emotion: 'Unease, the world tilted off its axis', example: 'The Third Man — Dutch angles throughout its noir atmosphere.' },
+      { name: 'Top Shot', when: 'Surveillance, patterns, spatial relationships', emotion: 'Detachment, alien observation', example: 'The Shining — overhead maze and corridor shots make the hotel look like a diagram, dehumanizing it.' },
+    ],
+  },
+  'camera-movement': {
+    label: 'Camera Movement',
+    intro: 'How the camera moves through space determines whether the audience observes or participates. Static cameras watch. Moving cameras experience.',
+    subtopics: [
+      { name: 'Pan', when: 'Following action horizontally, revealing space', emotion: 'Connection, discovery', example: 'The slow pan across No Country\'s battlefield — steady pace that feels like fate.' },
+      { name: 'Tracking Shot / Dolly', when: 'Following a character, building environment', emotion: 'Immersion, accompaniment', example: 'Goodfellas Copacabana shot — one 3-minute dolly through the club. Not showing the club. Showing Henry\'s world.' },
+      { name: 'Handheld', when: 'Naturalism, urgency, intimacy', emotion: 'Anxiety, immediacy, authenticity', example: 'Children of Men — handheld throughout makes a dystopic future feel observed, not staged. The camera breathes.' },
+      { name: 'Steadicam', when: 'Fluid dreamlike movement, controlled pursuit', emotion: 'Floating, supernatural smoothness', example: 'The Shining\'s tricycle sequence — too smooth, too patient. An invisible thing following Danny.' },
+      { name: 'Zoom (Dolly Zoom)', when: 'Sudden shock, rapid focus', emotion: 'Disorientation, revelation, threat', example: 'Jaws vertigo shot — foreground stays, background compresses. Disorientation made physical.' },
+      { name: 'Crash Zoom', when: 'Shock, comedic or horror punctuation', emotion: 'Instability, surprise', example: 'Edgar Wright uses crash zooms as musical punctuation. Wes Anderson uses them for comic precision.' },
+    ],
+  },
+  'lighting-design': {
+    label: 'Lighting Design',
+    intro: 'Same location, same actor, same lens — change the lighting and you change the genre, the emotion, and the meaning of every frame. Lighting is the most powerful tool in the cinematographer\'s arsenal.',
+    subtopics: [
+      { name: 'High-Key Lighting', when: 'Comedy, romance, positive emotional space', emotion: 'Safety, clarity, warmth', example: 'La La Land\'s musical numbers in saturated high-key — everyone glows. The sadness later hits harder.' },
+      { name: 'Low-Key Lighting', when: 'Noir, thriller, moral ambiguity', emotion: 'Danger, mystery, hidden truth', example: 'Every frame of Se7en — Fincher creates a world where darkness is a character, oppressive and alive.' },
+      { name: 'Silhouette Lighting', when: 'Mystery, power, iconic imagery', emotion: 'Anonymity, threat, mythic scale', example: 'The Godfather\'s opening — Brando in half light. We see power before we see the man.' },
+      { name: 'Natural Light', when: 'Realism, authenticity, documentary feel', emotion: 'Truth, vulnerability, rawness', example: 'Barry Lyndon — Kubrick shot by candlelight. The images look like Old Master paintings.' },
+      { name: 'Motivated Light', when: 'Source-based lighting that feels real', emotion: 'Groundedness, credibility', example: 'A lamp illuminates a scene — the light comes from somewhere, grounding the world in physics.' },
+    ],
+  },
+  'color-theory': {
+    label: 'Color Theory',
+    intro: 'Color grading is the final emotional coat of paint on a finished film. Colors carry universal psychological associations that directors leverage to guide audience feeling without a word.',
+    subtopics: [
+      { name: 'Warm Colors (Red/Orange/Gold)', when: 'Passion, danger, nostalgia, energy', emotion: 'Heat, threat, love, urgency', example: 'Blade Runner 2049\'s orange desert sequences — hot, hostile, apocalyptic beauty.' },
+      { name: 'Cool Colors (Blue/Teal)', when: 'Isolation, grief, technology, distance', emotion: 'Coldness, loneliness, clinical detachment', example: 'The Social Network — almost entirely cold blue/grey palette. Zuckerberg as emotionally disconnected.' },
+      { name: 'Desaturated / Black & White', when: 'Memory, past, moral gravity, documentary', emotion: 'Historical weight, authenticity', example: 'Schindler\'s List in B&W — aestheticizes horror while paradoxically making it feel more real.' },
+      { name: 'Color Contrast', when: 'Two characters or worlds in opposition', emotion: 'Tension between ideas', example: 'Parasite — warm rich yellows upstairs, cool greens in the semi-basement. Visual class warfare.' },
+      { name: 'Color Symbolism', when: 'Recurring color tied to a theme or character state', emotion: 'Subconscious signal amplification', example: 'American Beauty — red roses tied to desire and death throughout.' },
+    ],
+  },
+};
+
+// ─── SOUND & EDITING ─────────────────────────────────────────
+export const SOUND_TOPICS = {
+  'sound-design': {
+    label: 'Sound Design',
+    intro: 'Every ambient sound is a deliberate choice. The soundscape is the invisible layer that makes the visible world feel real and present.',
+    subtopics: [
+      { name: 'Dialogue', what: 'Spoken words between characters', why: 'Carries plot, character, and subtext simultaneously', emotion: 'Intimacy or confrontation depending on delivery', example: 'Whiplash — Fletcher\'s voice is a weapon. Every line designed to cut.' },
+      { name: 'Background Score', what: 'Non-diegetic music composition for the film', why: 'Tells the audience what to feel before they consciously understand why', emotion: 'Amplifies every existing emotion', example: 'Zimmer\'s Interstellar organ — builds dread and transcendence in parallel.' },
+      { name: 'Silence', what: 'The deliberate absence of sound', why: 'Most powerful tool in sound design — creates anticipation and impact', emotion: 'Dread, weight, the space before something terrible or beautiful', example: 'A Quiet Place — silence is structural. Breaking silence is death. The audience cannot breathe.' },
+      { name: 'Diegetic Sound', what: 'Sound that exists within the film\'s world (characters can hear it)', why: 'Grounds the audience in the reality of the scene', emotion: 'Presence, immersion', example: 'The radio in Dunkirk — soldiers can hear it. So can we. It connects us to their world.' },
+      { name: 'Non-Diegetic Sound', what: 'Sound added for the audience only (score, narration)', why: 'Shapes emotional experience without the characters\' awareness', emotion: 'Commentary, irony, amplification', example: 'The Godfather\'s score swells as Michael makes a decision — Michael doesn\'t hear it. We do.' },
+      { name: 'Ambient Sound', what: 'Background environmental audio', why: 'Creates the texture of a place — makes it feel inhabited', emotion: 'Atmosphere, world-building through ears', example: 'Blade Runner 2049\'s ambient industrial drone — the future sounds exhausted and vast.' },
+    ],
+  },
+  'editing': {
+    label: 'Editing Techniques',
+    intro: 'A great editor controls the heartbeat of a film. Editing is not just assembly — it is rhythm, time, and the manipulation of the audience\'s perception of reality.',
+    subtopics: [
+      { name: 'Standard Cut', what: 'One shot ends, another begins instantly', why: 'The invisible baseline of film language', emotion: 'Neutral, maintains narrative flow', example: 'Standard dialogue cuts — we don\'t notice them. That\'s the point.' },
+      { name: 'Jump Cut', what: 'Cut within the same scene that creates a visual jump', why: 'Creates anxiety, disorientation, urgency, or stylistic energy', emotion: 'Anxious, fragmented, unstable', example: 'Breathless (Godard, 1960) — popularized jump cuts as style. Now used throughout indie and thriller filmmaking.' },
+      { name: 'Match Cut', what: 'Cut where the last frame\'s shape or movement matches the first frame of next shot', why: 'Creates hidden connections between scenes — the audience feels meaning without being told it', emotion: 'Revelation, connection, thematic depth', example: '2001: A Space Odyssey — bone thrown in the air cuts to a spaceship. The history of human violence in one edit.' },
+      { name: 'Cross-Cutting', what: 'Alternating between two or more simultaneous scenes', why: 'Creates tension through juxtaposition, implies connection or contrast', emotion: 'Suspense, irony, thematic comparison', example: 'The Godfather\'s baptism-assassination sequence — Michael\'s spiritual vows cut against the murders he ordered.' },
+      { name: 'Montage', what: 'Rapid sequence of images conveying passage of time or accumulation of meaning', why: 'Compresses time and builds emotional charge quickly', emotion: 'Build-up, transformation, inevitability', example: 'Rocky\'s training montages — not about the training. About what the training means.' },
+      { name: 'Long Take', what: 'Extended unbroken shot, often tracking through space', why: 'Forces the audience to pay attention to duration; makes time feel real', emotion: 'Suspense, authenticity, virtuosity', example: 'Birdman (2014) — designed to feel like one continuous take. Time collapses into present-tense anxiety.' },
+      { name: 'Slow Motion', what: 'Frame rate increased, playback appears slower', why: 'Emphasizes a moment\'s importance, creates beauty or horror out of ordinary action', emotion: 'Grace, tragedy, impact weight', example: '300 — everything in slow motion creates mythic, superhero scale. Also used in Requiem for a Dream to make drug use feel simultaneously beautiful and catastrophic.' },
+    ],
+  },
+};
+
+// ─── THEMES DATABASE ─────────────────────────────────────────
+export const THEMES = [
+  { id: 'love', name: 'Love', meaning: 'Connection and its cost', explanation: 'Love in cinema is rarely simple joy — it is sacrifice, obsession, loss, and the terror of vulnerability. The most powerful love stories are about what love costs.', films: ['Eternal Sunshine of the Spotless Mind', 'Her', 'Casablanca', 'La La Land', 'Call Me By Your Name'], scenes: ['Joel and Clementine running through the frozen lake — love as spontaneous, fragile, and worth risking'], howDirectors: 'Through spatial proximity — two characters moving closer or pulling apart. Through shared silence. Through the objects people give each other.' },
+  { id: 'revenge', name: 'Revenge', meaning: 'Justice or anger consuming the self', explanation: 'Revenge narratives explore whether justice achieved through violence redeems or destroys the avenger. The best revenge films don\'t glorify revenge — they show its hollow completion.', films: ['Oldboy', 'Kill Bill', 'John Wick', 'The Revenant', 'Prisoners'], scenes: ['Hugh Glass reaching the top of the frozen cliff, only to realize revenge has left him emptier than before — The Revenant'], howDirectors: 'Through circular structure — the avenger becomes like their target. Through the moment of completion that feels wrong.' },
+  { id: 'freedom', name: 'Freedom', meaning: 'Escape from constraint — physical, social, or psychological', explanation: 'Freedom films ask: what are we willing to sacrifice for autonomy? The walls can be literal (prison) or invisible (expectation, trauma, love).', films: ['The Shawshank Redemption', 'Gladiator', '1917', 'Easy Rider', 'Braveheart'], scenes: ['Andy Dufresne in the rain — freedom as physical sensation, total and overwhelming'], howDirectors: 'Through contrast between confined and open spaces. Through the visual grammar of expansion — wide shots, open horizons.' },
+  { id: 'sacrifice', name: 'Sacrifice', meaning: 'Choosing loss for a greater good', explanation: 'True sacrifice cannot be undone. The best sacrifice scenes work because we believe the character could have chosen otherwise — and still chose loss.', films: ['Interstellar', 'Saving Private Ryan', 'Arrival', 'Avengers: Infinity War', 'Gran Torino'], scenes: ['Cooper entering the black hole — choosing the universe over watching his children grow'], howDirectors: 'Through stillness — the moment before sacrifice is often the quietest in the film. Through final looks and unfinished sentences.' },
+  { id: 'power', name: 'Power', meaning: 'Control over others and its psychological cost', explanation: 'Power films study how authority is gained, maintained, and lost. The most sophisticated show that power and the person wielding it are inseparable — power shapes whoever holds it.', films: ['The Godfather', 'Succession', 'Macbeth', 'The Crown', 'All the President\'s Men'], scenes: ['Michael Corleone kissing Fredo\'s cheek — the moment power becomes murder within a family'], howDirectors: 'Through framing (who is higher in the frame), through whose POV we inhabit, through who the camera watches enter a room.' },
+  { id: 'corruption', name: 'Corruption', meaning: 'The slow destruction of integrity', explanation: 'Corruption arcs are fascinating precisely because they are incremental. No one becomes corrupt in one decision. It is a series of small compromises, each one making the next easier.', films: ['Breaking Bad', 'The Godfather', 'Macbeth', 'Chinatown', 'There Will Be Blood'], scenes: ['Walter White in the crawl space — the laugh that is actually a death rattle for who he used to be'], howDirectors: 'Through light changing over time — characters who began in warm light end in shadow. Through physical posture and clothing.' },
+  { id: 'survival', name: 'Survival', meaning: 'The will to exist against impossible odds', explanation: 'Survival films strip away every luxury until only the essential question remains: how far will you go to stay alive? The best survival films discover that the question is actually about identity.', films: ['The Revenant', 'Cast Away', '127 Hours', 'Life of Pi', 'Gravity'], scenes: ['Chuck Noland at the ocean\'s edge with Wilson — survival revealing what genuinely matters'], howDirectors: 'Through physical degradation of the protagonist — we track survival through bodies changing over time. Through sound design as the environment actively fights back.' },
+  { id: 'identity', name: 'Identity', meaning: 'Who am I beneath what others see?', explanation: 'Identity films ask whether we are who we believe ourselves to be, or who others tell us we are. The most powerful identity stories show that the self is both real and constructed.', films: ['Fight Club', 'Black Swan', 'Parasite', 'Moonlight', 'Ex Machina'], scenes: ['Tyler Durden answering "Who are you?" and the NARRATOR realizing the answer'], howDirectors: 'Through mirrors and reflections as visual motifs. Through multiple performances by the same actor. Through costumes and masks.' },
+  { id: 'isolation', name: 'Isolation', meaning: 'The psychological weight of aloneness', explanation: 'Isolation films make the audience feel what it is to be alone not just physically but spiritually — cut off from understanding, from connection, from being seen.', films: ['Moon', 'Blade Runner 2049', 'Cast Away', 'Her', 'Arrival'], scenes: ['K driving through the vast, silent Las Vegas ruins — Blade Runner 2049\'s most isolating sequence'], howDirectors: 'Through negative space in the frame — characters dwarfed by their environment. Through silence as the dominant texture.' },
+  { id: 'hope', name: 'Hope', meaning: 'The refusal to accept that the worst will win', explanation: 'Hope in cinema is most powerful when it exists alongside genuine despair. Easy hope is cheap. Hope that survives real darkness — that is what cinema was built to show.', films: ['The Shawshank Redemption', 'Schindler\'s List', 'Life is Beautiful', '1917', 'Coco'], scenes: ['Andy\'s letter to Red: "Hope is a good thing, maybe the best of things."'], howDirectors: 'Through light entering dark spaces. Through a single person persisting when everyone else has stopped.' },
+  { id: 'fate', name: 'Fate', meaning: 'Destiny vs. free will — are we choosing?', explanation: 'Fate films ask whether human agency is real or illusory. The best do not answer — they make the question unbearable and beautiful at the same time.', films: ['No Country for Old Men', 'Arrival', 'Oedipus Rex adaptations', 'Magnolia'], scenes: ['The coin toss — Anton asking, "What is it you\'ve been carrying all this way for?"'], howDirectors: 'Through circular narrative structures. Through characters who seem to be making choices that were always inevitable.' },
+  { id: 'redemption', name: 'Redemption', meaning: 'The possibility of forgiveness — from others or yourself', explanation: 'Redemption films ask whether the past can be survived, and whether people who have done terrible things can be recovered. The best show that redemption is chosen, not given.', films: ['Gran Torino', 'Atonement', 'The Kite Runner', 'A Beautiful Mind', 'Schindler\'s List'], scenes: ['Schindler breaking down: "I could have saved more." — the awareness of insufficient redemption'], howDirectors: 'Through the protagonist returning to a physical space they previously damaged. Through the faces of those they wronged.' },
+  { id: 'obsession', name: 'Obsession', meaning: 'Desire that destroys judgment and eventually self', explanation: 'Obsession films trace the narrowing of a person\'s world until the object of obsession is all that remains. The horror is watching someone choose this narrowing.', films: ['Whiplash', 'Black Swan', 'There Will Be Blood', 'Promising Young Woman', 'Vertigo'], scenes: ['Andrew spitting blood on the drum at the Whiplash finale — obsession made literal and physical'], howDirectors: 'Through framing that gets tighter over time. Through the world literally shrinking as the obsession expands.' },
+  { id: 'betrayal', name: 'Betrayal', meaning: 'Trust broken — and what remains', explanation: 'Betrayal films are about the reconfiguration of a person\'s entire world when a fundamental trust collapses. The most devastating betrayals are from those who claimed love.', films: ['Atonement', 'Oldboy', 'Gone Girl', 'The Godfather Part II', 'A Separation'], scenes: ['Michael kissing Fredo\'s cheek — love and death in one gesture'], howDirectors: 'Through the visual grammar of revelation — the moment the victim\'s face shows they now understand everything.' },
+];
+
+// ─── ABOUT PAGE ──────────────────────────────────────────────
+export const ABOUT_CONTENT = {
+  hero: { title: `The <em>Observer</em>`, subtitle: 'CS Student. Film Junkie. Perpetual Learner.', bg: 'https://images.unsplash.com/photo-1493711662062-fa541adb3fc8' },
+  sections: [
+    { label: 'Who I Am', content: 'A Computer Science student living at the intersection of technology and art. By day, I think in algorithms. By night, I think in frames.' },
+    { label: 'Why Movies', content: 'Cinema is the most complex art form humanity has engineered — every pixel, every note, every silence is a calculated decision designed to make millions of people feel something specific. I want to understand how that works.' },
+    { label: 'Why This Website', content: 'There is no film school near me. So I built my own. This site is my classroom, my notebook, and my attempt to reverse-engineer the magic of storytelling into skills I can apply to my own work.' },
+    { label: 'What I\'m Learning', content: 'How story structure creates emotional inevitability. How a camera angle carries psychological weight. How silence is the most powerful sound a filmmaker can use. How every great film is asking one question — and spending two hours answering it honestly.' },
+    { label: 'My Goal', content: 'To build things — stories, software, films, experiences — that make people feel something they couldn\'t have felt without encountering them.' },
+  ],
+  philosophy: '"I\'m not just trying to watch movies. I\'m trying to understand how they make us feel."',
+  meta: [
+    { label: 'Discipline', value: 'Computer Science' },
+    { label: 'Passion', value: 'Narrative Cinema' },
+    { label: 'Method', value: 'Scene Analysis' },
+    { label: 'Favourite Director', value: 'Christopher Nolan' },
+    { label: 'Favourite Film', value: 'Interstellar' },
+    { label: 'Currently Studying', value: 'Denis Villeneuve\'s work' },
+  ],
+};
+
+// ─── BLOG / NOTES DATABASE ──────────────────────────────────
+export const BLOG_POSTS = [
+  {
+    id: 'nolan-time-logic',
+    title: 'The Logic of Time in Christopher Nolan\'s Work',
+    date: 'April 02, 2026',
+    category: 'Analysis',
+    excerpt: 'How Nolan uses time not as a setting, but as a structural antagonist in Dunkirk, Tenet, and Inception.',
+    content: `Christopher Nolan doesn't just use time as a setting; he use it as a character, often the primary antagonist. In Dunkirk, time is compressed and expanded across three timelines (one week, one day, one hour) to create a feeling of inevitable convergence. In Tenet, time is inverted — creating a visual language of cause-and-effect that the audience must learn in real-time. This blog post explores why Nolan is obsessed with the clock and how he uses it to build tension that traditional linear storytelling cannot achieve.`
+  },
+  {
+    id: 'villeneuve-visual-silence',
+    title: 'Denis Villeneuve and the Power of Visual Silence',
+    date: 'March 28, 2026',
+    category: 'Cinematography',
+    excerpt: 'Studying how the director of Dune and Arrival uses large-scale imagery and absolute silence to create awe.',
+    content: `Denis Villeneuve understands awe better than almost any living director. He uses scale — massive desert landscapes in Dune, monolithic ships in Arrival — to make the human characters look small. But his real secret is silence. He isn't afraid to let a shot breathe for five seconds without music or dialogue. This post breaks down his technique of "Visual Silence" and how it forces the audience to pay attention to the frame as if it were a painting.`
+  },
+  {
+    id: 'audio-terror-sound-design',
+    title: 'Audio Terror: Why Sound is Scarier than Visuals',
+    date: 'March 15, 2026',
+    category: 'Sound Design',
+    excerpt: 'Analyzing the soundscapes of No Country for Old Men and A Quiet Place.',
+    content: `Why is a silent room scarier than a monster? This post explores the psychology of sound in thrillers. In No Country for Old Men, there is almost no musical score. Every sound you hear is diegetic — the beeping of a transponder, the crunch of gravel. This lack of music removes the safety net for the audience. We are as alone in the silence as the protagonist. I explore how directors use "Primal Audio" to trigger fear responses that visuals alone cannot reach.`
+  }
+];

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Behind The Frame | The Art of Filmmaking</title>
+  <meta name="description" content="A cinematic platform for learning filmmaking, scene analysis, cinematography, and movie theory. I don't just watch movies. I study them.">
+
+  <!-- Resource hints -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://images.unsplash.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+
+  <!-- Preload hero image (LCP) -->
+  <link rel="preload" as="image" fetchpriority="high"
+    href="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&fm=webp&q=72&w=1600">
+
+  <!-- Inline favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='10' fill='%230B0B0F'/><text y='.9em' font-size='80' x='10'>🎬</text></svg>">
+
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+  <!-- ── TOP NAVBAR ─────────────────────────────────────────── -->
+  <nav id="top-nav" aria-label="Main Navigation">
+    <div class="nav-container">
+      <a class="nav-logo" data-path="home">
+        <span class="logo-bracket">[</span>
+        Behind The Frame
+        <span class="logo-bracket">]</span>
+      </a>
+      <ul class="nav-links" id="nav-links">
+        <li><a class="nav-link" data-path="home">Home</a></li>
+        <li><a class="nav-link" data-path="how-movies-work">How Movies Work</a></li>
+        <li><a class="nav-link" data-path="scene-breakdown">Scene Breakdown</a></li>
+        <li><a class="nav-link" data-path="cinematography">Cinematography</a></li>
+        <li><a class="nav-link" data-path="sound-editing">Sound &amp; Editing</a></li>
+        <li><a class="nav-link" data-path="movie-themes">Movie Themes</a></li>
+        <li><a class="nav-link" data-path="blog">Blog</a></li>
+        <li><a class="nav-link" data-path="about">About</a></li>
+      </ul>
+      <!-- Mobile hamburger -->
+      <button class="nav-hamburger" id="nav-hamburger" aria-label="Toggle mobile menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── CINEMATIC OVERLAYS ─────────────────────────────────── -->
+  <div class="noise-overlay" aria-hidden="true"></div>
+  <div id="transition-overlay" aria-hidden="true"></div>
+  <div id="entry-overlay" aria-hidden="true"></div>
+
+  <!-- ── CUSTOM CURSOR ─────────────────────────────────────── -->
+  <div id="cursor" aria-hidden="true"><div class="dot"></div></div>
+
+  <!-- ── GAME MENU BUTTON (bottom-left HUD) ────────────────── -->
+  <button id="game-menu-btn" aria-label="Open cinematic menu" aria-expanded="false" aria-controls="side-menu">
+    <div class="gmb-inner">
+      <div class="gmb-icon">
+        <span></span><span></span><span></span>
+      </div>
+      <span class="gmb-label">MENU</span>
+    </div>
+    <div class="gmb-ring"></div>
+  </button>
+
+  <!-- ── GOD OF WAR FULL-SCREEN MENU ─────────────────────── -->
+  <div id="side-menu" role="dialog" aria-label="Cinematic Menu" aria-modal="true">
+    <!-- Fixed full-screen background image -->
+    <div id="menu-bg" aria-hidden="true">
+      <img id="menu-bg-img" src="" alt="" loading="lazy" decoding="async">
+      <div id="menu-bg-overlay" aria-hidden="true"></div>
+    </div>
+
+    <!-- Click-outside / close zone (right half) -->
+    <div id="menu-close-zone" aria-hidden="true"></div>
+
+    <!-- Left-aligned scrollable menu panel -->
+    <div id="menu-panel">
+      <!-- Top ornament -->
+      <div class="menu-ornament-top" aria-hidden="true">
+        <div class="ornament-line"></div>
+        <div class="ornament-diamond"></div>
+        <div class="ornament-line"></div>
+      </div>
+
+      <!-- Brand / Title -->
+      <div class="menu-brand">
+        <div class="menu-brand-eyebrow">BEHIND THE FRAME</div>
+        <h2 class="menu-brand-title">SELECT MODE</h2>
+        <div class="menu-brand-line"></div>
+      </div>
+
+      <!-- Scrollable nav items -->
+      <div id="menu-scroll-area">
+        <nav id="main-nav" aria-label="Side Navigation">
+          <!-- Injected by JS -->
+        </nav>
+      </div>
+
+      <!-- Footer hint -->
+      <div class="menu-footer">
+        <span class="menu-footer-key">ESC</span>
+        <span class="menu-footer-sep">·</span>
+        <span>Press ESC to close or click outside</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── PAGE CONTENT ───────────────────────────────────────── -->
+  <main id="app" aria-live="polite"></main>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>

@@ -4,21 +4,23 @@
    ========================================================== */
 
 :root {
-  --black:     #0B0B0F;
-  --dark-blue: #111827;
+  --black:     #050507;
+  --dark-blue: #0A0F1A;
   --gold:      #D4AF37;
-  --gold-dim:  rgba(212,175,55,0.35);
-  --gold-glow: rgba(212,175,55,0.12);
+  --gold-dim:  rgba(212,175,55,0.25);
+  --gold-glow: rgba(212,175,55,0.1);
+  --card-bg:   rgba(15, 15, 20, 0.6);
+  --card-border: rgba(212, 175, 55, 0.1);
   --gray-100:  #E5E7EB;
   --gray-400:  #9ca3af;
   --gray-500:  #6b7280;
   --gray-700:  #374151;
   --ease:      cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-in:   cubic-bezier(0.4, 0, 1, 1);
-  --ease-out:  cubic-bezier(0, 0, 0.2, 1);
   --font-sans: 'Outfit', sans-serif;
   --font-serif:'Playfair Display', serif;
-  --nav-h:     70px;
+  --nav-h:     80px;
+  --section-gap: 12rem;
+  --card-gap: 2.5rem;
 }
 
 /* ── RESET ─────────────────────────────────────────────── */
@@ -28,7 +30,7 @@ body {
   background: var(--black);
   color: var(--gray-100);
   font-family: var(--font-sans);
-  line-height: 1.7;
+  line-height: 1.8;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -631,22 +633,139 @@ button { font-family: var(--font-sans); }
 /* ══════════════════════════════════════════════════════════
    LAYOUT UTILITIES
    ══════════════════════════════════════════════════════════ */
-.container { max-width:1300px; margin:0 auto; padding:0 4rem; }
-.section { padding:9rem 0; contain:layout style; }
-.section-pt0 { padding-top: 0; }
-.section-label {
-  display: block;
-  font-size: 0.62rem;
-  letter-spacing: 0.65em;
-  text-transform: uppercase;
+/* ── CINEMATIC CARDS ───────────────────────────────────── */
+.cinematic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: var(--card-gap);
+  margin-top: 4rem;
+}
+
+.cinematic-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 35px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s var(--ease);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.cinematic-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--gold);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(212,175,55,0.15);
+}
+
+.cinematic-card-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
+}
+
+.cinematic-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.cinematic-card-text {
+  color: var(--gray-400);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+.cinematic-card-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
   color: var(--gold);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+.cinematic-card:hover .cinematic-card-footer {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .cinematic-grid { grid-template-columns: 1fr; }
+}
+
+/* ── TYPOGRAPHY ───────────────────────────────────────── */
+.page-hero-title {
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  line-height: 1.0;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.02em;
+}
+
+.page-hero-sub {
+  font-size: 1.1rem;
+  color: var(--gray-400);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+.section-title-large {
+  font-size: 3rem;
   margin-bottom: 1.5rem;
-  font-weight: 600;
+  text-align: center;
 }
-.section-title {
-  font-size: clamp(1.8rem, 3vw, 2.8rem);
-  margin-bottom: 1rem;
+
+.body-text-large {
+  font-size: 1.15rem;
+  line-height: 1.9;
+  color: var(--gray-100);
+  margin-bottom: 2rem;
 }
+
+.quote-block {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-style: italic;
+  line-height: 1.4;
+  color: #fff;
+  margin: 6rem 0 2rem;
+  text-align: center;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.quote-author {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  color: var(--gold);
+  text-align: center;
+  display: block;
+  margin-bottom: 4rem;
+}
+
+.section { padding: var(--section-gap) 0; }
+.section-full { min-height: 80vh; display: flex; align-items: center; }
+
+@media (max-width: 768px) {
+  .section { padding: 6rem 0; }
+  .quote-block { margin: 4rem 0 1.5rem; }
+}
+
+.container { max-width:1300px; margin:0 auto; padding:0 4rem; }
 .section-divider {
   width: 3rem; height: 1px;
   background: var(--gold);

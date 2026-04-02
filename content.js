@@ -2,6 +2,18 @@
 //  BEHIND THE FRAME — CONTENT DATABASE
 // ═══════════════════════════════════════════════════════════
 
+// ─── FAMOUS FILM QUOTES ──────────────────────────────────────
+export const FAMOUS_QUOTES = [
+  { text: "Cinema is a matter of what's in the frame and what's out.", author: "Martin Scorsese" },
+  { text: "The screen is a dangerous blankness. If you don't fill it with something, the audience will fill it with their own expectations.", author: "Christopher Nolan" },
+  { text: "My job is to make you see what I want you to see, and to make you feel what I want you to feel.", author: "Stanley Kubrick" },
+  { text: "A story should have a beginning, a middle and an end, but not necessarily in that order.", author: "Jean-Luc Godard" },
+  { text: "Cinema is a mirror that can reflect our dreams, but also our nightmares.", author: "Akira Kurosawa" },
+  { text: "The eyes are the window to the soul, but the camera is the window to the truth.", author: "Andrei Tarkovsky" },
+  { text: "Filmmaking is a chance to live many lives.", author: "Denis Villeneuve" },
+  { text: "Pick up a camera. Shoot something. No matter how small, no matter how cheesy, no matter if your friends and your sister star in it. Die each day until you find your voice.", author: "James Cameron" }
+];
+
 // ─── HOW MOVIES WORK: TOPIC DATA ────────────────────────────
 export const TOPICS = {
   'what-is-story': {
@@ -250,7 +262,7 @@ export const SCENE_DATA = {
     summary: 'Walt discovers Skyler gave his money to Ted Beneke. He lies on the floor of the crawl space and begins laughing — a sound that becomes indistinguishable from screaming.',
     purpose: 'The pivot point of the entire series. The moment Walt\'s arc completes. His laugh is the sound of a man realizing there is no going back.',
     character: 'Walter has told himself: "Everything I\'ve done is for my family." This scene destroys that story. He cannot stop being Heisenberg to try to save what\'s left.',
-    camera: 'Cranes slowly upward from above, making Walt smaller in the frame. Skyler\'s legs visible through the floorboards — the family he claims to be doing this for, above him in a world he\'s left.',
+    camera: 'Cranes slowly upward from above, making Walt smaller in the frame. Skyler\'s legs visible through the floorboards — the family he claims to be doing this for, above him in a world he\'left.',
     lighting: 'A single bare bulb. Dungeon lighting. Harsh, isolated, claustrophobic.',
     color: 'Brown dirt and grey concrete. The money (green) now meaningless. The palette says: buried alive.',
     sound: 'Bryan Cranston\'s laugh starts as a chuckle, rises to full laughter, becomes impossible to categorize. Skyler\'s uncertain "Walt?" over the phone. Heisenberg\'s theme building underneath.',
@@ -413,49 +425,18 @@ export const THEMES = [
 
 // ─── ABOUT PAGE ──────────────────────────────────────────────
 export const ABOUT_CONTENT = {
-  hero: { title: `The <em>Observer</em>`, subtitle: 'CS Student. Film Junkie. Perpetual Learner.', bg: 'https://images.unsplash.com/photo-1493711662062-fa541adb3fc8' },
+  hero: { title: "About The Director", subtitle: 'The mind behind the mechanics of frames.', bg: 'https://images.unsplash.com/photo-1493711662062-fa541adb3fc8' },
   sections: [
-    { label: 'Who I Am', content: 'A Computer Science student living at the intersection of technology and art. By day, I think in algorithms. By night, I think in frames.' },
-    { label: 'Why Movies', content: 'Cinema is the most complex art form humanity has engineered — every pixel, every note, every silence is a calculated decision designed to make millions of people feel something specific. I want to understand how that works.' },
-    { label: 'Why This Website', content: 'There is no film school near me. So I built my own. This site is my classroom, my notebook, and my attempt to reverse-engineer the magic of storytelling into skills I can apply to my own work.' },
-    { label: 'What I\'m Learning', content: 'How story structure creates emotional inevitability. How a camera angle carries psychological weight. How silence is the most powerful sound a filmmaker can use. How every great film is asking one question — and spending two hours answering it honestly.' },
-    { label: 'My Goal', content: 'To build things — stories, software, films, experiences — that make people feel something they couldn\'t have felt without encountering them.' },
+    { label: 'Who I Am', content: 'A student of the craft living in the intersection of logic and visual poetry. I view filmmaking not just as entertainment, but as the most sophisticated engineering of human emotion ever devised.' },
+    { label: 'Why Movies', content: 'Cinema is the ultimate empathy machine. It combines architecture, music, literature, and photography into a single, unified experience. I am obsessed with the precision of that unification.' },
+    { label: 'Why This Website Exists', content: 'Behind The Frame was built as a repository of knowledge for those who don\'t just want to watch movies, but want to see how they are made. It is my personal classroom and a guide for fellow travelers.' },
+    { label: 'What I Am Learning', content: 'I am currently deep-diving into the psychological effects of sound design and the architectural use of space in cinematography. My focus is on how technical decisions manifest as emotional truths.' },
+    { label: 'My Goal', content: 'To reverse-engineer the "magic" of cinema into a set of principles that can be used to tell stories that resonate and endure.' },
+    { label: 'Final Quote', content: '"Cinema is a matter of what\'s in the frame and what\'s out."', author: "Martin Scorsese" },
   ],
-  philosophy: '"I\'m not just trying to watch movies. I\'m trying to understand how they make us feel."',
   meta: [
-    { label: 'Discipline', value: 'Computer Science' },
-    { label: 'Passion', value: 'Narrative Cinema' },
-    { label: 'Method', value: 'Scene Analysis' },
-    { label: 'Favourite Director', value: 'Christopher Nolan' },
-    { label: 'Favourite Film', value: 'Interstellar' },
-    { label: 'Currently Studying', value: 'Denis Villeneuve\'s work' },
+    { label: 'Discipline', value: 'Directing & Analysis' },
+    { label: 'Method', value: 'Deconstruction' },
+    { label: 'Currently Studying', value: 'Visual Silence' },
   ],
 };
-
-// ─── BLOG / NOTES DATABASE ──────────────────────────────────
-export const BLOG_POSTS = [
-  {
-    id: 'nolan-time-logic',
-    title: 'The Logic of Time in Christopher Nolan\'s Work',
-    date: 'April 02, 2026',
-    category: 'Analysis',
-    excerpt: 'How Nolan uses time not as a setting, but as a structural antagonist in Dunkirk, Tenet, and Inception.',
-    content: `Christopher Nolan doesn't just use time as a setting; he use it as a character, often the primary antagonist. In Dunkirk, time is compressed and expanded across three timelines (one week, one day, one hour) to create a feeling of inevitable convergence. In Tenet, time is inverted — creating a visual language of cause-and-effect that the audience must learn in real-time. This blog post explores why Nolan is obsessed with the clock and how he uses it to build tension that traditional linear storytelling cannot achieve.`
-  },
-  {
-    id: 'villeneuve-visual-silence',
-    title: 'Denis Villeneuve and the Power of Visual Silence',
-    date: 'March 28, 2026',
-    category: 'Cinematography',
-    excerpt: 'Studying how the director of Dune and Arrival uses large-scale imagery and absolute silence to create awe.',
-    content: `Denis Villeneuve understands awe better than almost any living director. He uses scale — massive desert landscapes in Dune, monolithic ships in Arrival — to make the human characters look small. But his real secret is silence. He isn't afraid to let a shot breathe for five seconds without music or dialogue. This post breaks down his technique of "Visual Silence" and how it forces the audience to pay attention to the frame as if it were a painting.`
-  },
-  {
-    id: 'audio-terror-sound-design',
-    title: 'Audio Terror: Why Sound is Scarier than Visuals',
-    date: 'March 15, 2026',
-    category: 'Sound Design',
-    excerpt: 'Analyzing the soundscapes of No Country for Old Men and A Quiet Place.',
-    content: `Why is a silent room scarier than a monster? This post explores the psychology of sound in thrillers. In No Country for Old Men, there is almost no musical score. Every sound you hear is diegetic — the beeping of a transponder, the crunch of gravel. This lack of music removes the safety net for the audience. We are as alone in the silence as the protagonist. I explore how directors use "Primal Audio" to trigger fear responses that visuals alone cannot reach.`
-  }
-];

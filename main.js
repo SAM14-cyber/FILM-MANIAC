@@ -4,9 +4,9 @@
  * GPU-Only Animations · IntersectionObserver reveals · 60 FPS
  */
 
-//import { gsap } from 'gsap';
+import { gsap } from 'gsap';
 import Lenis from '@studio-freight/lenis';
-import { TOPICS, SCENE_DATA, CINEMAT_TOPICS, SOUND_TOPICS, THEMES, ABOUT_CONTENT, BLOG_POSTS } from './content.js';
+import { TOPICS, SCENE_DATA, CINEMAT_TOPICS, SOUND_TOPICS, THEMES, ABOUT_CONTENT } from './content.js';
 
 // ─── SMOOTH SCROLL ──────────────────────────────────────────────────────────
 const lenis = new Lenis({ 
@@ -69,7 +69,7 @@ const PAGES = {
   },
 
   'how-movies-work': {
-    hero: { title:`Master the <em>Story</em>`, subtitle:'The infrastructure of cinematic narrative.', bg: IMG('https://images.unsplash.com/photo-1512070670240-ce35323672e5') },
+    hero: { title: `Story <em>Mechanics</em>`, subtitle: 'The infrastructure of cinematic narrative.', bg: IMG('https://images.unsplash.com/photo-1512070670240-ce35323672e5') },
     topics: [
       { title:'What is Story',      sub:'The core conflict driving every great narrative.' },
       { title:'Character Arc',      sub:'The internal transformation across the film.' },
@@ -140,8 +140,7 @@ const MENU_ITEMS = [
   { id:'cinematography',  label:'Cinematography',  sub:'Camera, lighting, color',  icon: ICO.camera },
   { id:'sound-editing',   label:'Sound & Editing', sub:'Sound and pacing',         icon: ICO.music  },
   { id:'movie-themes',    label:'Movie Themes',    sub:'Meaning behind stories',   icon: ICO.heart  },
-  { id:'blog',            label:'Blog / Notes',    sub:'My learning notes',        icon: ICO.edit   },
-  { id:'about',           label:'About',           sub:'About me and my journey',  icon: ICO.user   },
+  { id:'about',           label:'About',           sub:'Behind the Frame',         icon: ICO.user   },
 ];
 
 // ─── STATE ──────────────────────────────────────────────────────────────────
@@ -469,65 +468,65 @@ function renderTopicPage(id) {
         <!-- Content Cards -->
         <div class="topic-sections-container container">
           <section id="definition" class="topic-section-wrapper">
-            <div class="topic-section-card reveal">
-              <h3>Simple Explanation</h3>
-              <p class="topic-definition-text">${t.definition}</p>
+            <div class="cinematic-card reveal">
+              <h3 class="cinematic-card-title">Simple Explanation</h3>
+              <p class="cinematic-card-text" style="font-size: 1.1rem; color: #fff;">${t.definition}</p>
             </div>
           </section>
 
           <section id="why-matters" class="topic-section-wrapper">
-            <div class="topic-section-card reveal d1">
-              <h3>Why This Matters</h3>
-              <p>${t.whyMatters}</p>
+            <div class="cinematic-card reveal d1">
+              <h3 class="cinematic-card-title">Why This Matters</h3>
+              <p class="cinematic-card-text">${t.whyMatters}</p>
             </div>
           </section>
 
           <section id="how-it-works" class="topic-section-wrapper">
-            <div class="topic-section-card reveal d2">
-              <h3>How It Works</h3>
-              <p>${t.howItWorks}</p>
+            <div class="cinematic-card reveal d2">
+              <h3 class="cinematic-card-title">How It Works</h3>
+              <p class="cinematic-card-text">${t.howItWorks}</p>
             </div>
           </section>
 
           <section id="types" class="topic-section-wrapper">
-            <div class="topic-section-card reveal">
-              <h3>Types & Styles</h3>
-              <div class="topic-card-grid">
+            <div class="cinematic-card reveal">
+              <h3 class="cinematic-card-title">Types & Styles</h3>
+              <div class="cinematic-grid" style="margin-top: 1rem; --card-gap: 1.5rem;">
                 ${t.types.map(tp => `
-                  <div class="topic-sub-card">
-                    <h4>${tp.name}</h4>
-                    <p>${tp.desc}</p>
+                  <div class="cinematic-card" style="padding: 24px; border-color: rgba(212,175,55,0.05);">
+                    <h4 style="color: var(--gold);">${tp.name}</h4>
+                    <p class="cinematic-card-text" style="font-size: 0.85rem;">${tp.desc}</p>
                   </div>`).join('')}
               </div>
             </div>
           </section>
 
           <section id="examples" class="topic-section-wrapper">
-            <div class="topic-section-card reveal">
-              <h3>Movie Examples</h3>
-              <div class="topic-examples-grid">
+            <div class="cinematic-card reveal">
+              <h3 class="cinematic-card-title">Movie Examples</h3>
+              <div class="cinematic-grid" style="margin-top: 1rem; --card-gap: 1.5rem;">
                 ${t.examples.map(ex => `
-                  <div class="topic-example-box">
-                    <strong>${ex.title} (${ex.year})</strong>
-                    <p>${ex.explanation}</p>
+                  <div class="cinematic-card" style="padding: 24px; border-color: rgba(212,175,55,0.05);">
+                    <strong style="color: #fff;">${ex.title} (${ex.year})</strong>
+                    <p class="cinematic-card-text" style="font-size: 0.85rem;">${ex.explanation}</p>
                   </div>`).join('')}
               </div>
             </div>
           </section>
 
           <section id="mistakes" class="topic-section-wrapper">
-            <div class="topic-section-card reveal">
-              <h3>Common Mistakes</h3>
-              <ul class="topic-mistakes-list">
+            <div class="cinematic-card reveal">
+              <h3 class="cinematic-card-title">Common Mistakes</h3>
+              <ul style="color: var(--gray-400); padding-left: 1.2rem; line-height: 2;">
                 ${t.mistakes.map(m => `<li>${m}</li>`).join('')}
               </ul>
             </div>
           </section>
 
           <section id="summary" class="topic-section-wrapper">
-            <div class="topic-section-card reveal summary-card">
-              <h3>Personal Summary</h3>
-              <blockquote class="topic-quote">"${t.myLearning}"</blockquote>
+            <div class="cinematic-card reveal summary-card">
+              <h3 class="cinematic-card-title">Personal Learning</h3>
+              <blockquote class="topic-quote" style="font-size: 1.25rem; font-style: italic; color: var(--gold);">"${t.myLearning}"</blockquote>
             </div>
           </section>
 
@@ -1038,57 +1037,7 @@ function initCollectionScroll() {
 }
 
 
-function renderBlogPage() {
-  const app = document.getElementById('app');
-  app.innerHTML = `
-    <section class="page-hero">
-      <div class="page-hero-bg">
-        <img src="${IMG('https://images.unsplash.com/photo-1455390582262-044cdead277a', 1600)}" alt="">
-        <div class="page-hero-bg-gradient"></div>
-      </div>
-      <div class="page-hero-content">
-        <h1>Film <em>Journal</em></h1>
-        <p class="page-hero-subtitle">My learning notes and cinematic explorations.</p>
-      </div>
-    </section>
-    <section class="section">
-      <div class="container">
-        <div class="blog-grid">
-          ${BLOG_POSTS.map((post, i) => `
-            <div class="blog-card reveal d${(i%3)+1}" data-path="blog-post--${post.id}">
-              <div class="blog-card-meta">
-                <span class="blog-card-cat">${post.category}</span>
-                <span class="blog-card-date">${post.date}</span>
-              </div>
-              <h2 class="blog-card-title">${post.title}</h2>
-              <p class="blog-card-excerpt">${post.excerpt}</p>
-              <div class="blog-card-link">Continue Reading ${ICO.arrow}</div>
-            </div>`).join('')}
-        </div>
-      </div>
-    </section>
-    ${footerHTML()}`;
-}
 
-function renderBlogPost(id) {
-  const post = BLOG_POSTS.find(p => p.id === id);
-  if (!post) return;
-  const app = document.getElementById('app');
-  app.innerHTML = `
-    ${backBtn('blog', 'Blog')}
-    <div class="detail-hero">
-      <div class="blog-post-meta">
-        <span class="blog-card-cat">${post.category}</span> · ${post.date}
-      </div>
-      <h1 class="detail-hero-title">${post.title}</h1>
-    </div>
-    <div class="detail-body container">
-      <div class="blog-post-content reveal">
-        <p>${post.content}</p>
-      </div>
-    </div>
-    ${footerHTML()}`;
-}
 
 // ─── PAGE RENDERS ─────────────────────────────────────────────────────────────
 function renderPage(path) {
@@ -1100,8 +1049,6 @@ function renderPage(path) {
   if (path.startsWith('cinemat--')) { renderCinematTopic(path.replace('cinemat--', '')); return; }
   if (path.startsWith('sound--')) { renderSoundTopic(path.replace('sound--', '')); return; }
   if (path.startsWith('theme--')) { renderThemePage(path.replace('theme--', '')); return; }
-  if (path.startsWith('blog-post--')) { renderBlogPost(path.replace('blog-post--', '')); return; }
-  if (path === 'blog') { renderBlogPage(); return; }
 
   const page = PAGES[path];
 
@@ -1162,15 +1109,17 @@ function renderPage(path) {
       </section>
       <section class="section">
         <div class="container">
-          <span class="section-label reveal">Start Here</span>
+          <span class="section-label reveal">The Curriculum</span>
           <h2 class="section-title reveal d1">Explore The Craft</h2>
-          <div class="section-divider reveal d2"></div>
-          <div class="cards-grid">
+          <p class="page-hero-sub reveal d2">Master the technical and emotional layers of cinematic storytelling.</p>
+          
+          <div class="cinematic-grid">
             ${page.cards.map((c, i) => `
-              <div class="card reveal-scale d${(i%4)+1}" onclick="window.app.navigate('${c.id}')">
-                <div class="card-number">0${i+1}</div>
-                ${lazyImg(c.img, c.title)}
-                <div class="card-label"><h3>${c.title}</h3><span>${c.sub}</span></div>
+              <div class="cinematic-card reveal d${(i%4)+1}" data-path="${c.id}" style="cursor:pointer">
+                <div class="cinematic-card-icon">🎬</div>
+                <h3 class="cinematic-card-title">${c.title}</h3>
+                <p class="cinematic-card-text">${c.sub}</p>
+                <div class="cinematic-card-footer">View Syllabus ${ICO.arrow}</div>
               </div>`).join('')}
           </div>
         </div>
@@ -1197,18 +1146,18 @@ function renderPage(path) {
           </div>
         </div>
       </section>
-      <section class="section theory-section">
+      <section class="section">
         <div class="container">
           <span class="section-label reveal">Deep Dives</span>
           <h2 class="section-title reveal d1">Film Theory Topics</h2>
-          <div class="section-divider reveal d2"></div>
-          <div class="theory-grid">
+          <p class="page-hero-sub reveal d2">Explore the psychological and philosophical foundations of cinema.</p>
+          
+          <div class="cinematic-grid">
             ${page.theory.map((t, i) => `
-              <div class="theory-item reveal d${(i%4)+1}">
-                <span class="theory-num">0${i+1}</span>
-                <h4>${t.title}</h4>
-                <p>${t.sub}</p>
-                <div class="theory-underline"></div>
+              <div class="cinematic-card reveal d${(i%4)+1}">
+                <div class="cinematic-card-icon">🧠</div>
+                <h3 class="cinematic-card-title">${t.title}</h3>
+                <p class="cinematic-card-text">${t.sub}</p>
               </div>`).join('')}
           </div>
         </div>
@@ -1223,18 +1172,15 @@ function renderPage(path) {
         <div class="container">
           <span class="section-label reveal">The Fundamentals</span>
           <h2 class="section-title reveal d1">The Building Blocks of Story</h2>
-          <p class="section-intro reveal d2">Click any topic to open a full deep-dive page — definition, types, movie examples, scene breakdowns, and what I learned.</p>
-          <div class="section-divider reveal d3"></div>
-          <div class="topic-list">
+          <p class="page-hero-sub reveal d2">The essential blueprints of cinematic narrative, from arc to symbolism.</p>
+          
+          <div class="cinematic-grid">
             ${topicEntries.map(([id, t], i) => `
-              <div class="topic-list-item reveal d${(i%3)+1}" data-path="topic--${id}">
-                <div class="topic-list-num">${String(i+1).padStart(2,'0')}</div>
-                <div class="topic-list-icon">${t.icon}</div>
-                <div class="topic-list-text">
-                  <h3>${t.label}</h3>
-                  <p>${t.definition.slice(0,100)}…</p>
-                </div>
-                <div class="topic-list-arrow">${ICO.arrow}</div>
+              <div class="cinematic-card reveal d${(i%3)+1}" data-path="topic--${id}" style="cursor:pointer">
+                <div class="cinematic-card-icon">${t.icon}</div>
+                <h3 class="cinematic-card-title">${t.label}</h3>
+                <p class="cinematic-card-text">${t.summary}</p>
+                <div class="cinematic-card-footer">Learn More ${ICO.arrow}</div>
               </div>`).join('')}
           </div>
         </div>
@@ -1275,18 +1221,15 @@ function renderPage(path) {
         <div class="container">
           <span class="section-label reveal">The Visual Language</span>
           <h2 class="section-title reveal d1">Cinematography Guide</h2>
-          <p class="section-intro reveal d2">Click any category to explore every element in detail — what it is, when to use it, the emotion it creates, and real movie examples.</p>
-          <div class="section-divider reveal d3"></div>
-          <div class="topic-list">
+          <p class="page-hero-sub reveal d2">Camera, lighting, and the architectural construction of the frame.</p>
+          
+          <div class="cinematic-grid">
             ${cinematEntries.map(([id, t], i) => `
-              <div class="topic-list-item reveal d${(i%3)+1}" data-path="cinemat--${id}">
-                <div class="topic-list-num">${String(i+1).padStart(2,'0')}</div>
-                <div class="topic-list-icon">🎥</div>
-                <div class="topic-list-text">
-                  <h3>${t.label}</h3>
-                  <p>${t.intro.slice(0,100)}…</p>
-                </div>
-                <div class="topic-list-arrow">${ICO.arrow}</div>
+              <div class="cinematic-card reveal d${(i%3)+1}" data-path="cinemat--${id}" style="cursor:pointer">
+                <div class="cinematic-card-icon">🎥</div>
+                <h3 class="cinematic-card-title">${t.label}</h3>
+                <p class="cinematic-card-text">${t.short}</p>
+                <div class="cinematic-card-footer">Enter Classroom ${ICO.arrow}</div>
               </div>`).join('')}
           </div>
         </div>
@@ -1300,18 +1243,15 @@ function renderPage(path) {
         <div class="container">
           <span class="section-label reveal">The Invisible Art</span>
           <h2 class="section-title reveal d1">Sound & Editing Guide</h2>
-          <p class="section-intro reveal d2">From silence to the jump cut — every technique explained with examples and emotional analysis.</p>
-          <div class="section-divider reveal d3"></div>
-          <div class="topic-list">
+          <p class="page-hero-sub reveal d2">From silence to the jump cut — the heartbeat of cinematic emotion.</p>
+          
+          <div class="cinematic-grid">
             ${soundEntries.map(([id, t], i) => `
-              <div class="topic-list-item reveal d${(i%3)+1}" data-path="sound--${id}">
-                <div class="topic-list-num">${String(i+1).padStart(2,'0')}</div>
-                <div class="topic-list-icon">🔊</div>
-                <div class="topic-list-text">
-                  <h3>${t.label}</h3>
-                  <p>${t.intro.slice(0,100)}…</p>
-                </div>
-                <div class="topic-list-arrow">${ICO.arrow}</div>
+              <div class="cinematic-card reveal d${(i%3)+1}" data-path="sound--${id}" style="cursor:pointer">
+                <div class="cinematic-card-icon">🔊</div>
+                <h3 class="cinematic-card-title">${t.label}</h3>
+                <p class="cinematic-card-text">${t.short}</p>
+                <div class="cinematic-card-footer">Start Study ${ICO.arrow}</div>
               </div>`).join('')}
           </div>
         </div>
@@ -1324,15 +1264,15 @@ function renderPage(path) {
         <div class="container">
           <span class="section-label reveal">Universal Patterns</span>
           <h2 class="section-title reveal d1">Every Major Film Theme</h2>
-          <p class="section-intro reveal d2">Click any theme to explore its meaning, films that use it, and how directors visualize the idea on screen.</p>
-          <div class="section-divider reveal d3"></div>
-          <div class="themes-big-grid">
+          <p class="page-hero-sub reveal d2">Explore how directors visualize abstract concepts through story and image.</p>
+          
+          <div class="cinematic-grid">
             ${THEMES.map((t, i) => `
-              <div class="theme-big-card reveal d${(i%3)+1}" data-path="theme--${t.id}">
-                <h3>${t.name}</h3>
-                <p class="theme-big-meaning">${t.meaning}</p>
-                <div class="theme-big-films">${t.films.slice(0,2).join(' · ')}</div>
-                <div class="theme-big-arrow">${ICO.arrow}</div>
+              <div class="cinematic-card reveal d${(i%3)+1}" data-path="theme--${t.id}" style="cursor:pointer">
+                <div class="cinematic-card-icon">💡</div>
+                <h3 class="cinematic-card-title">${t.name}</h3>
+                <p class="cinematic-card-text">${t.meaning}</p>
+                <div class="cinematic-card-footer">View Analysis ${ICO.arrow}</div>
               </div>`).join('')}
           </div>
         </div>
@@ -1343,29 +1283,24 @@ function renderPage(path) {
     const A = ABOUT_CONTENT;
     html = pageHeroHTML(A.hero) + `
       <section class="section">
-        <div class="container">
-          <div class="about-new-grid">
-            <div class="about-left reveal-left">
-              <div class="portrait-frame">
-                ${lazyImg(A.hero.bg, 'Portrait')}
-              </div>
-              <div class="portrait-corner tl"></div>
-              <div class="portrait-corner br"></div>
-              <blockquote class="about-philosophy">${A.philosophy}</blockquote>
-            </div>
-            <div class="about-right">
-              ${A.sections.map((s, i) => `
-                <div class="about-section-block reveal d${(i%3)+1}">
-                  <span class="about-section-label">${s.label}</span>
-                  <p>${s.content}</p>
+        <div class="container" style="max-width: 1100px">
+          <div class="cinematic-grid">
+            ${A.sections.map((s, i) => `
+              <div class="cinematic-card reveal d${(i%3)+1}" ${i === 5 ? 'style="grid-column: span 2; border-color: var(--gold-dim);"' : ''}>
+                <div class="cinematic-card-icon">${i === 5 ? '🖋️' : '🎬'}</div>
+                <h3 class="cinematic-card-title">${s.label}</h3>
+                <p class="cinematic-card-text" ${i === 5 ? 'style="font-family: var(--font-serif); font-size: 1.4rem; font-style: italic; color: #fff;"' : ''}>${s.content}</p>
+                ${s.author ? `<div class="cinematic-card-footer" style="opacity: 1;">— ${s.author}</div>` : ''}
+              </div>`).join('')}
+          </div>
+          
+          <div class="section" style="margin-top: 4rem; border-top: 1px solid var(--card-border); padding-top: 4rem;">
+            <div class="stat-grid">
+              ${A.meta.map(m => `
+                <div class="stat-item reveal">
+                  <span class="stat-label">${m.label}</span>
+                  <span class="stat-num" style="font-size: 1.2rem; color: var(--gold)">${m.value}</span>
                 </div>`).join('')}
-              <div class="about-meta reveal d2">
-                ${A.meta.map(m => `
-                  <div class="meta-item">
-                    <span class="meta-label">${m.label}</span>
-                    <span class="meta-value">${m.value}</span>
-                  </div>`).join('')}
-              </div>
             </div>
           </div>
         </div>

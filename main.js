@@ -413,23 +413,30 @@ function renderTopicPage(id) {
     <!-- Course Top Bar -->
     <div class="course-top-bar sticky-top">
       <div class="course-top-left">
-        <a class="back-to-level" data-path="how-movies-work" style="cursor:pointer">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <a class="btn-back-inner" data-path="how-movies-work" style="cursor:pointer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
             <path d="M19 12H5M12 19l-7-7 7-7"/>
           </svg>
-          <span>LEVEL 1 — STORY BASICS</span>
+          Back
         </a>
+        <nav class="breadcrumb">
+          <a data-path="home">Home</a>
+          <span>/</span>
+          <a data-path="how-movies-work">Story Basics</a>
+          <span>/</span>
+          <span>${t.label}</span>
+        </nav>
       </div>
       <div class="course-top-center">
-        <div class="progress-info">
+        <h2>${t.label}</h2>
+      </div>
+      <div class="course-top-right">
+        <div class="progress-mini">
           <span class="topic-count">TOPIC ${currentIndex + 1} / ${topicKeys.length}</span>
           <div class="course-progress-container">
             <div class="course-progress-bar" id="topicProgressBar" style="width: 0%"></div>
           </div>
         </div>
-      </div>
-      <div class="course-top-right">
-        <span class="topic-label-top">${t.label}</span>
       </div>
     </div>
 
@@ -525,27 +532,28 @@ function renderTopicPage(id) {
           </section>
 
           <!-- Navigation Footer -->
-          <footer class="topic-nav-footer">
+          <footer class="cinematic-nav-footer">
             ${prevId ? `
-              <div class="topic-nav-btn prev" data-path="topic--${prevId}" style="cursor:pointer">
-                <span class="btn-label">PREVIOUS</span>
-                <span class="btn-title">${TOPICS[prevId].label}</span>
+              <div class="big-nav-btn prev" data-path="topic--${prevId}" style="cursor:pointer">
+                <span class="nav-label">PREVIOUS TOPIC</span>
+                <span class="nav-title">${TOPICS[prevId].label}</span>
               </div>` : '<span></span>'}
 
-            <div class="topic-nav-btn home" data-path="how-movies-work" style="cursor:pointer">
+            <div class="big-nav-center" data-path="how-movies-work">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
               </svg>
+              <span>STORY BASICS</span>
             </div>
 
             ${nextId ? `
-              <div class="topic-nav-btn next" data-path="topic--${nextId}" style="cursor:pointer">
-                <span class="btn-label">NEXT</span>
-                <span class="btn-title">${TOPICS[nextId].label}</span>
+              <div class="big-nav-btn next" data-path="topic--${nextId}" style="cursor:pointer">
+                <span class="nav-label">NEXT TOPIC</span>
+                <span class="nav-title">${TOPICS[nextId].label}</span>
               </div>` : `
-              <div class="topic-nav-btn next" data-path="cinematography" style="cursor:pointer">
-                <span class="btn-label">FINISHED LEVEL 1</span>
-                <span class="btn-title">GO TO CINEMATOGRAPHY</span>
+              <div class="big-nav-btn next" data-path="cinematography" style="cursor:pointer">
+                <span class="nav-label">FINISH LEVEL 1</span>
+                <span class="nav-title">VIEW CINEMATOGRAPHY</span>
               </div>`}
           </footer>
         </div>
@@ -594,6 +602,12 @@ function renderScenePage(id) {
   const s = SCENE_DATA[id];
   if (!s) return;
   const app = document.getElementById('app');
+  
+  const sceneKeys = Object.keys(SCENE_DATA);
+  const idx = sceneKeys.indexOf(id);
+  const prevId = idx > 0 ? sceneKeys[idx - 1] : null;
+  const nextId = idx < sceneKeys.length - 1 ? sceneKeys[idx + 1] : null;
+
   const fields = [
     ['Scene Summary',    s.summary],
     ['Purpose of Scene', s.purpose],
@@ -609,8 +623,35 @@ function renderScenePage(id) {
     ['Emotion Created',  s.emotion],
     ['My Learning',      s.myLearning],
   ];
+
   app.innerHTML = `
-    ${backBtn('scene-breakdown', 'Scene Breakdown')}
+    <!-- Top Bar -->
+    <div class="course-top-bar sticky-top">
+      <div class="course-top-left">
+        <a class="btn-back-inner" data-path="scene-breakdown" style="cursor:pointer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          Back
+        </a>
+        <nav class="breadcrumb">
+          <a data-path="home">Home</a>
+          <span>/</span>
+          <a data-path="scene-breakdown">Breakdowns</a>
+          <span>/</span>
+          <span>${s.title}</span>
+        </nav>
+      </div>
+      <div class="course-top-center">
+        <h2>${s.title}</h2>
+      </div>
+      <div class="course-top-right">
+        <div class="progress-mini">
+          <span class="topic-count">SCENE 0${idx+1} / 0${sceneKeys.length}</span>
+        </div>
+      </div>
+    </div>
+
     <div class="scene-detail-hero" style="background-image:url('${IMG(s.img,1400)}')">
       <div class="scene-detail-hero-overlay"></div>
       <div class="scene-detail-hero-content">
@@ -618,6 +659,7 @@ function renderScenePage(id) {
         <h1>${s.title}</h1>
       </div>
     </div>
+
     <div class="scene-detail-body">
       <div class="breakdown-grid container">
         ${fields.map(([label, val], i) => `
@@ -626,57 +668,270 @@ function renderScenePage(id) {
             <div class="breakdown-value">${val}</div>
           </div>`).join('')}
       </div>
+
+      <!-- Bottom Nav -->
+      <footer class="cinematic-nav-footer">
+        ${prevId ? `
+          <div class="big-nav-btn prev" data-path="scene--${prevId}" style="cursor:pointer">
+            <span class="nav-label">PREVIOUS BREAKDOWN</span>
+            <span class="nav-title">${SCENE_DATA[prevId].title}</span>
+          </div>` : '<span></span>'}
+
+        <div class="big-nav-center" data-path="scene-breakdown">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="2" width="20" height="20" rx="2.18" ry="2.18"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="2" y1="7" x2="7" y2="7"/><line x1="2" y1="17" x2="7" y2="17"/><line x1="17" y1="17" x2="22" y2="17"/><line x1="17" y1="7" x2="22" y2="7"/>
+          </svg>
+          <span>ALL BREAKDOWNS</span>
+        </div>
+
+        ${nextId ? `
+          <div class="big-nav-btn next" data-path="scene--${nextId}" style="cursor:pointer">
+            <span class="nav-label">NEXT BREAKDOWN</span>
+            <span class="nav-title">${SCENE_DATA[nextId].title}</span>
+          </div>` : '<span></span>'}
+      </footer>
     </div>
     ${footerHTML()}`;
 }
 
+
 function renderCinematTopic(id) {
   const t = CINEMAT_TOPICS[id];
   if (!t) return;
+
+  const keys = Object.keys(CINEMAT_TOPICS);
+  const idx = keys.indexOf(id);
+  const prevId = idx > 0 ? keys[idx - 1] : null;
+  const nextId = idx < keys.length - 1 ? keys[idx + 1] : null;
+
   const app = document.getElementById('app');
   app.innerHTML = `
-    ${backBtn('cinematography','Cinematography')}
-    <div class="detail-hero">
-      <h1 class="detail-hero-title">${t.label}</h1>
-      <p class="detail-hero-intro">${t.intro}</p>
+    <!-- Top Bar -->
+    <div class="course-top-bar sticky-top">
+      <div class="course-top-left">
+        <a class="btn-back-inner" data-path="cinematography" style="cursor:pointer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          Back
+        </a>
+        <nav class="breadcrumb">
+          <a data-path="home">Home</a>
+          <span>/</span>
+          <a data-path="cinematography">Cinematography</a>
+          <span>/</span>
+          <span>${t.label}</span>
+        </nav>
+      </div>
+      <div class="course-top-center">
+        <h2>${t.label}</h2>
+      </div>
+      <div class="course-top-right">
+        <div class="progress-mini">
+          <span class="topic-count">0${idx+1} — ${t.cat}</span>
+        </div>
+      </div>
     </div>
-    <div class="detail-body container">
-      ${t.subtopics.map((sub, i) => `
-        <div class="cinemat-card reveal d${(i%3)+1}">
-          <h3>${sub.name}</h3>
-          <div class="cinemat-card-grid">
-            <div><span class="cinemat-label">When to Use</span><p>${sub.when}</p></div>
-            <div><span class="cinemat-label">Emotion Created</span><p>${sub.emotion}</p></div>
-            <div class="cinemat-example"><span class="cinemat-label">Movie Example</span><p>${sub.example}</p></div>
+
+    <!-- Collection Layout -->
+    <div class="topic-layout grid-layout">
+      <!-- Sidebar Nav -->
+      <aside class="topic-sidebar sticky-sidebar">
+        <nav class="topic-mini-nav">
+          ${t.subtopics.map((sub, i) => `
+            <a href="#${sub.id}" class="mini-nav-item ${i===0?'active':''}" data-section="${sub.id}">${sub.name}</a>
+          `).join('')}
+        </nav>
+      </aside>
+
+      <main class="topic-content-main">
+        <!-- Topic Hero -->
+        <section class="topic-hero" style="background-image: url('${t.bg}')">
+          <div class="topic-hero-overlay"></div>
+          <div class="topic-hero-content reveal-left">
+            <span class="topic-hero-num">0${idx+1} — STUDY</span>
+            <h1>${t.label}</h1>
+            <p>${t.short}</p>
           </div>
-        </div>`).join('')}
+        </section>
+
+        <!-- Grid Cards -->
+        <div class="container">
+          <div class="collection-grid">
+            ${t.subtopics.map((sub, i) => `
+              <div class="inner-card reveal d${(i%3)+1}" id="${sub.id}">
+                <h3>${sub.name}</h3>
+                <div class="inner-card-content">
+                  <div class="inner-card-field">
+                    <span class="inner-card-label">When To Use</span>
+                    <p class="inner-card-text">${sub.when}</p>
+                  </div>
+                  <div class="inner-card-field">
+                    <span class="inner-card-label">Emotion Created</span>
+                    <p class="inner-card-text">${sub.emotion}</p>
+                  </div>
+                  <div class="inner-card-field">
+                    <span class="inner-card-label">Movie Example</span>
+                    <div class="inner-card-example">
+                      <p class="inner-card-text">${sub.example}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+
+          <!-- Bottom Nav -->
+          <footer class="cinematic-nav-footer">
+            ${prevId ? `
+              <div class="big-nav-btn prev" data-path="cinemat--${prevId}" style="cursor:pointer">
+                <span class="nav-label">PREVIOUS</span>
+                <span class="nav-title">${CINEMAT_TOPICS[prevId].label}</span>
+              </div>` : '<span></span>'}
+
+            <div class="big-nav-center" data-path="cinematography">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/>
+              </svg>
+              <span>CINEMATOGRAPHY</span>
+            </div>
+
+            ${nextId ? `
+              <div class="big-nav-btn next" data-path="cinemat--${nextId}" style="cursor:pointer">
+                <span class="nav-label">NEXT</span>
+                <span class="nav-title">${CINEMAT_TOPICS[nextId].label}</span>
+              </div>` : `
+              <div class="big-nav-btn next" data-path="sound-editing" style="cursor:pointer">
+                <span class="nav-label">COMPLETED</span>
+                <span class="nav-title">VIEW SOUND & EDITING</span>
+              </div>`}
+          </footer>
+        </div>
+      </main>
     </div>
     ${footerHTML()}`;
+
+  // Re-attach sidebar scroll logic
+  initCollectionScroll();
 }
 
 function renderSoundTopic(id) {
   const t = SOUND_TOPICS[id];
   if (!t) return;
+
+  const keys = Object.keys(SOUND_TOPICS);
+  const idx = keys.indexOf(id);
+  const prevId = idx > 0 ? keys[idx - 1] : null;
+  const nextId = idx < keys.length - 1 ? keys[idx + 1] : null;
+
   const app = document.getElementById('app');
   app.innerHTML = `
-    ${backBtn('sound-editing','Sound & Editing')}
-    <div class="detail-hero">
-      <h1 class="detail-hero-title">${t.label}</h1>
-      <p class="detail-hero-intro">${t.intro}</p>
+    <!-- Top Bar -->
+    <div class="course-top-bar sticky-top">
+      <div class="course-top-left">
+        <a class="btn-back-inner" data-path="sound-editing" style="cursor:pointer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          Back
+        </a>
+        <nav class="breadcrumb">
+          <a data-path="home">Home</a>
+          <span>/</span>
+          <a data-path="sound-editing">Sound & Editing</a>
+          <span>/</span>
+          <span>${t.label}</span>
+        </nav>
+      </div>
+      <div class="course-top-center">
+        <h2>${t.label}</h2>
+      </div>
+      <div class="course-top-right">
+        <div class="progress-mini">
+          <span class="topic-count">0${idx+1} — ${t.cat}</span>
+        </div>
+      </div>
     </div>
-    <div class="detail-body container">
-      ${t.subtopics.map((sub, i) => `
-        <div class="cinemat-card reveal d${(i%3)+1}">
-          <h3>${sub.name}</h3>
-          <div class="cinemat-card-grid">
-            <div><span class="cinemat-label">What It Is</span><p>${sub.what}</p></div>
-            <div><span class="cinemat-label">Why Used</span><p>${sub.why}</p></div>
-            <div><span class="cinemat-label">Emotional Effect</span><p>${sub.emotion}</p></div>
-            <div class="cinemat-example"><span class="cinemat-label">Movie Example</span><p>${sub.example}</p></div>
+
+    <!-- Collection Layout -->
+    <div class="topic-layout grid-layout">
+      <!-- Sidebar Nav -->
+      <aside class="topic-sidebar sticky-sidebar">
+        <nav class="topic-mini-nav">
+          ${t.subtopics.map((sub, i) => `
+            <a href="#${sub.id}" class="mini-nav-item ${i===0?'active':''}" data-section="${sub.id}">${sub.name}</a>
+          `).join('')}
+        </nav>
+      </aside>
+
+      <main class="topic-content-main">
+        <!-- Topic Hero -->
+        <section class="topic-hero" style="background-image: url('${t.bg}')">
+          <div class="topic-hero-overlay"></div>
+          <div class="topic-hero-content reveal-left">
+            <span class="topic-hero-num">0${idx+1} — SOUND STUDY</span>
+            <h1>${t.label}</h1>
+            <p>${t.short}</p>
           </div>
-        </div>`).join('')}
+        </section>
+
+        <!-- Grid Cards -->
+        <div class="container">
+          <div class="collection-grid">
+            ${t.subtopics.map((sub, i) => `
+              <div class="inner-card reveal d${(i%3)+1}" id="${sub.id}">
+                <h3>${sub.name}</h3>
+                <div class="inner-card-content">
+                  <div class="inner-card-field">
+                    <span class="inner-card-label">${sub.what ? 'What It Is' : 'When To Use'}</span>
+                    <p class="inner-card-text">${sub.what || sub.when}</p>
+                  </div>
+                  <div class="inner-card-field">
+                    <span class="inner-card-label">${sub.why ? 'Why Used' : 'Emotion Created'}</span>
+                    <p class="inner-card-text">${sub.why || sub.emotion}</p>
+                  </div>
+                  <div class="inner-card-field">
+                    <span class="inner-card-label">Movie Example</span>
+                    <div class="inner-card-example">
+                      <p class="inner-card-text">${sub.example}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+
+          <!-- Bottom Nav -->
+          <footer class="cinematic-nav-footer">
+            ${prevId ? `
+              <div class="big-nav-btn prev" data-path="sound--${prevId}" style="cursor:pointer">
+                <span class="nav-label">PREVIOUS</span>
+                <span class="nav-title">${SOUND_TOPICS[prevId].label}</span>
+              </div>` : '<span></span>'}
+
+            <div class="big-nav-center" data-path="sound-editing">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>
+              </svg>
+              <span>SOUND & EDITING</span>
+            </div>
+
+            ${nextId ? `
+              <div class="big-nav-btn next" data-path="sound--${nextId}" style="cursor:pointer">
+                <span class="nav-label">NEXT</span>
+                <span class="nav-title">${SOUND_TOPICS[nextId].label}</span>
+              </div>` : `
+              <div class="big-nav-btn next" data-path="movie-themes" style="cursor:pointer">
+                <span class="nav-label">COMPLETED</span>
+                <span class="nav-title">EXPLORE MOVIE THEMES</span>
+              </div>`}
+          </footer>
+        </div>
+      </main>
     </div>
     ${footerHTML()}`;
+
+  initCollectionScroll();
 }
 
 function renderThemePage(id) {
@@ -684,32 +939,102 @@ function renderThemePage(id) {
   if (!t) return;
   const app = document.getElementById('app');
   app.innerHTML = `
-    ${backBtn('movie-themes','Movie Themes')}
-    <div class="detail-hero">
-      <h1 class="detail-hero-title">${t.name}</h1>
-      <p class="detail-hero-intro theme-meaning">${t.meaning}</p>
-    </div>
-    <div class="detail-body container">
-      <div class="detail-block reveal">
-        <span class="detail-block-label">What This Theme Means</span>
-        <p>${t.explanation}</p>
+    <!-- Top Bar -->
+    <div class="course-top-bar sticky-top">
+      <div class="course-top-left">
+        <a class="btn-back-inner" data-path="movie-themes" style="cursor:pointer">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          Back
+        </a>
+        <nav class="breadcrumb">
+          <a data-path="home">Home</a>
+          <span>/</span>
+          <a data-path="movie-themes">Themes</a>
+          <span>/</span>
+          <span>${t.name}</span>
+        </nav>
       </div>
-      <div class="detail-block reveal d1">
-        <span class="detail-block-label">Films With This Theme</span>
-        <div class="theme-film-list">
-          ${t.films.map(f => `<span class="theme-film-tag">${f}</span>`).join('')}
+      <div class="course-top-center">
+        <h2>${t.name}</h2>
+      </div>
+      <div class="course-top-right">
+        <div class="progress-mini">
+          <span class="topic-count">PATTERN ANALYSIS</span>
         </div>
       </div>
-      <div class="detail-block reveal d2">
-        <span class="detail-block-label">Key Scene Examples</span>
-        ${t.scenes.map(s => `<div class="detail-scene-ex"><p>${s}</p></div>`).join('')}
-      </div>
-      <div class="detail-block reveal d3">
-        <span class="detail-block-label">How Directors Show This Theme</span>
-        <p>${t.howDirectors}</p>
-      </div>
     </div>
+
+    <!-- Theme layout using established sections classes -->
+    <section class="topic-content-main">
+      <div class="topic-layout" style="grid-template-columns: 1fr;">
+        <div class="container" style="max-width: 1000px; padding: 4rem 0;">
+          <div class="topic-section-wrapper">
+             <div class="topic-section-card reveal">
+               <h3>Introduction</h3>
+               <p class="topic-definition-text">${t.meaning}</p>
+             </div>
+          </div>
+
+          <div class="topic-section-wrapper">
+             <div class="topic-section-card reveal d1">
+               <h3>Explanation</h3>
+               <p>${t.explanation}</p>
+             </div>
+          </div>
+
+          <div class="topic-section-wrapper">
+             <div class="topic-section-card reveal d2">
+               <h3>Core Filmography</h3>
+               <div class="theme-film-list" style="margin-top: 2rem;">
+                 ${t.films.map(f => `<span class="theme-film-tag">${f}</span>`).join('')}
+               </div>
+             </div>
+          </div>
+
+          <div class="topic-section-wrapper">
+             <div class="topic-section-card reveal d3">
+               <h3>Directorial Execution</h3>
+               <p>${t.howDirectors}</p>
+             </div>
+          </div>
+
+          <!-- Bottom Nav -->
+          <footer class="cinematic-nav-footer">
+            <span></span>
+            <div class="big-nav-center" data-path="movie-themes">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+              </svg>
+              <span>ALL THEMES</span>
+            </div>
+            <span></span>
+          </footer>
+        </div>
+      </div>
+    </section>
     ${footerHTML()}`;
+}
+
+function initCollectionScroll() {
+  const sidebarLinks = document.querySelectorAll('.mini-nav-item');
+  const sections = Array.from(sidebarLinks).map(link => document.getElementById(link.getAttribute('href').slice(1)));
+  
+  const handleScroll = () => {
+    let current = "";
+    sections.forEach(section => {
+      if (!section) return;
+      const top = section.offsetTop;
+      if (window.scrollY >= top - 200) current = section.getAttribute('id');
+    });
+    sidebarLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href').slice(1) === current);
+    });
+  };
+
+  window.addEventListener('scroll', handleScroll, { passive: true });
+  window.addEventListener('hashchange', () => window.removeEventListener('scroll', handleScroll), { once: true });
 }
 
 
